@@ -36,3 +36,38 @@
       transform: rotate(360deg);
     }
   }
+
+  .graphContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .lineChart{
+    border-radius: 20px;
+    padding: 20px;
+    width: 500;
+    margin-top: 1rem;
+    box-shadow: 0 15px 30px 5px rgba(0,0,0,0.5);
+  }
+
+  .pieChart{
+    border-radius: 20px;
+    padding: 20px;
+    width: 500;
+    margin-top: 1rem;
+    box-shadow: 0 15px 30px 5px rgba(0,0,0,0.5);
+  }
+
+  @media screen and (max-width:883px){
+    .graphContainer{
+      flex-direction: column;
+    }
+    .lineChart{
+      width: 90vw;
+    }
+    .pieChart{
+      width: 90vw;
+    }
+  }
