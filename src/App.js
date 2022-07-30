@@ -6,6 +6,7 @@ import PieChart from "./components/PieChart";
 import { UserData } from "./data";
 import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
+import Login from './components/Login'
 
 function App() {
   const [userData, setUserData] = useState({
@@ -51,17 +52,18 @@ function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
+      <Login></Login>
       {/* <div style={{ width: 700 }}>
         <BarChart chartData={userData} />
       </div> */}
-      <div className="graphContainer">
+      {/* <div className="graphContainer">
         <div className="lineChart" >
           <LineChart chartData={lineData} />
         </div>
         <div className="pieChart" >
           <PieChart chartData={userData} />
         </div>
-      </div>
+      </div> */}
     </div>
 
   );
