@@ -6,7 +6,7 @@ import PieChart from "./components/PieChart";
 import { UserData } from "./data";
 import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
-import Login from './components/Login'
+import Login from './components/Login/Login'
 
 function App() {
   const [userData, setUserData] = useState({
