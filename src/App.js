@@ -6,11 +6,11 @@ import PieChart from "./components/PieChart";
 import { UserData } from "./data";
 import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
-import Login from './components/Login/Login'
+import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/SignUp";
 import {
   BrowserRouter,
-  Routes,
+  Routes, 
   Route,
 } from "react-router-dom";
 function App() {
@@ -56,8 +56,8 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar></NavBar>
-      <Signup></Signup>
+      {/* <NavBar></NavBar>
+      <Signup></Signup> */}
     <BrowserRouter>
       <Routes>
             <Route path="/home" element={<NavBar/>}/>
@@ -65,6 +65,8 @@ function App() {
             <Route path="/" element={<Login></Login>}/>
       </Routes>
       </BrowserRouter>
+
+
         {/* <div style={{ width: 700 }}>
         <BarChart chartData={userData} />
       </div> */}

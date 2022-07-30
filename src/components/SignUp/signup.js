@@ -37,7 +37,7 @@ const Signup = () => {
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
-					<h1>Welcome Back</h1>
+					<h1>Already have an account?</h1>
 					<Link to="/">
 						<button type="button" className={styles.white_btn}>
 							Sign in
