@@ -7,7 +7,12 @@ import { UserData } from "./data";
 import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
 import Login from './components/Login/Login'
-
+import Signup from "./components/SignUp/SignUp";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 function App() {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.level),
@@ -52,8 +57,15 @@ function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-      <Login></Login>
-      {/* <div style={{ width: 700 }}>
+      <Signup></Signup>
+    <BrowserRouter>
+      <Routes>
+            <Route path="/home" element={<NavBar/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/" element={<Login></Login>}/>
+      </Routes>
+      </BrowserRouter>
+        {/* <div style={{ width: 700 }}>
         <BarChart chartData={userData} />
       </div> */}
       {/* <div className="graphContainer">

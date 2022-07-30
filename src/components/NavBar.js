@@ -30,16 +30,16 @@ export default function Navbar() {
       >
         <ul>
           <li>
-            <a href="#">Dashboard</a>
+            <a href="/home">Dashboard</a>
           </li>
           <li>
-            <a href="#">Analysis</a>
+            <a href="/analytics">Analysis</a>
           </li>
           <li>
-            <a href="#">My Teams</a>
+            <a href="/teams">My Teams</a>
           </li>
           <li>
-            <a href="#">Login</a>
+            <a href="/">Login</a>
           </li>
         </ul>
       </div>

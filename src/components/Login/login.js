@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
+import {Link } from "react-router-dom"
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
@@ -52,16 +53,20 @@ const Login = () => {
 							className={styles.input}
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
+						<Link to="/home">
 						<button type="submit" className={styles.green_btn}>
 							Sign In
 						</button>
+						</Link>
 					</form>
 				</div>
 				<div className={styles.right}>
 					<h1>New Here ?</h1>
+						<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
 						</button>
+						</Link>
 				</div>
 			</div>
 		</div>

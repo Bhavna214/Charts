@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
+import {Link } from "react-router-dom"
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -37,11 +38,11 @@ const Signup = () => {
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
-					{/* <Link to="/login"> */}
+					<Link to="/">
 						<button type="button" className={styles.white_btn}>
 							Sign in
 						</button>
-					{/* </Link> */}
+					</Link>
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
