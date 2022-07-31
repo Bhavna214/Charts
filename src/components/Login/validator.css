@@ -20,8 +20,8 @@ body{
     background: url(./index.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'beyond_wonderlandregular';
-    /* font-family: 'Berkshire Swash', cursive; */
+    /* font-family: 'beyond_wonderlandregular'; */
+    font-family: 'Berkshire Swash', cursive;
 }
 
 .container {

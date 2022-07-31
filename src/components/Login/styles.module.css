@@ -6,6 +6,9 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Cormorant+SC&family=Nunito:wght@200;300;400;600;700&family=Playfair+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
+
 .login_container {
 	/* width: 100%;
 	min-height: 100vh;
@@ -20,7 +23,8 @@
 	background: url(./index.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	font-family: 'beyond_wonderlandregular';
+	/* font-family: 'beyond_wonderlandregular'; */
+	font-family: 'Berkshire Swash', cursive;
 	border-radius: 10px;
 }
 

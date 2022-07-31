@@ -115,7 +115,7 @@ function enterTeacher(){
 		<div className='validator__container'> 
 		  <div className="container">
 			  <div className="headingContainer">
-				  <h2>WELCOME TO BUG SQUASHERS</h2>
+				  <h2>Welcome To Bug Squashers</h2>
 				  <img src={image} alt="" />
 			  </div>
   
