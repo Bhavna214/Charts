@@ -1,16 +1,35 @@
-.validator__container{
+@font-face {
+    font-family: 'beyond_wonderlandregular';
+    src: url('./beyond_wonderland-webfont.woff2') format('woff2'),
+         url('./beyond_wonderland-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Cormorant+SC&family=Nunito:wght@200;300;400;600;700&family=Playfair+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
+body{
+    background-color: #401e07;
+}
+
+.validator__container {
     display: grid;
     place-content: center;
     height: 100vh;
-    background-color:#C9CED3;
+    /* background-color: #935125; */
+    background: url(./index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'beyond_wonderlandregular';
+    /* font-family: 'Berkshire Swash', cursive; */
 }
 
-.container{
-    background-color: #E6E6E6;
+.container {
+    background-color: #BF7B35;
     width: 40vw;
     min-height: fit-content;
     border-radius: 20px;
-    box-shadow: 0 15px 30px 5px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,24 +38,26 @@
     flex-wrap: wrap;
 }
 
-.headingContainer{
+.headingContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.container h2{
-    font-size: 1.5rem;
+.container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #401e07;
 }
 
-.container img{
+.container img {
     width: 80%;
     margin: 10px 0;
     border-radius: 20px;
 }
 
 
-.buttonContainer{
+.buttonContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,27 +68,34 @@
 
 
 
-.buttonContainer button{
+.buttonContainer button {
     width: 50%;
     margin: 5px auto;
-    padding: 5px;
+    padding: 7px;
     border-radius: 10px;
-    background: #36B292;
-    color: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(179.43deg, #bb6f39 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
+    color: #ECB360;
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
 
 
 @media screen and (max-width:768px) {
-    .container{
+    .container {
         width: 80vw;
     }
 
-    .buttonContainer button{
+    .buttonContainer button {
         width: 80%;
     }
 
-    .container h2{
+    .container h2 {
         font-size: 1rem;
         text-align: center;
     }

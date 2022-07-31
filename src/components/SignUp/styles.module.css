@@ -1,17 +1,25 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Cormorant+SC&family=Nunito:wght@200;300;400;600;700&family=Playfair+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
 .signup_container {
 	width: 100%;
 	min-height: 100vh;
-	background-color: #f5f5f5;
+	background: url('./index1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	display: grid;
 	place-content: center;
-
+	font-family: 'Berkshire Swash', cursive;
 }
 
 .signup_form_container {
-	width: 60vw;
-	height: 60vh;
+	width: 35vw;
+	/* height: 45vh; */
 	display: flex;
+	flex-direction: column-reverse;
 	border-radius: 20px;
+	background-color: #BF7B35;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
 		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
@@ -22,14 +30,16 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #3bb19b;
-	border-radius: 20px;
+	background-color: #BF7B35;
+	/* border-radius: 20px; */
 	padding: 0 10px;
+	padding-bottom: 2rem;
+	border-radius: 10px;
 }
 
 .left h1 {
 	margin-top: 0;
-	color: white;
+	color: black;
 	font-size: 25px;
 	align-self: center;
 	padding: 10px 0;
@@ -41,8 +51,10 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
-	border-radius: 20px;
+	background-color: #BF7B35;
+	/* border-radius: 20px; */
+	border-bottom: 2px solid black;
+	border-radius: 10px;
 }
 
 .form_container {
@@ -62,13 +74,16 @@
 
 .input {
 	outline: none;
-	border: none;
 	width: 80%;
 	padding: 15px;
-	border-radius: 10px;
-	background-color: #edf5f3;
 	margin: 5px 0;
-	font-size: 14px;
+
+	background: linear-gradient(179.43deg, #bb6f39 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
+    color: #ECB360;
+	font-weight: 700;
+	font-size: 1rem;
 }
 
 .error_msg {
@@ -77,28 +92,38 @@
 	margin: 5px 0;
 	font-size: 14px;
 	background-color: #f34646;
-	color: white;
+	color: black;
 	border-radius: 5px;
 	text-align: center;
 }
 
 .white_btn,
 .green_btn {
-	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
-	border-radius: 20px;
+	background: linear-gradient(179.43deg, #5f2e0b 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
 	width: 180px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 1rem;
 	cursor: pointer;
+	color: #ECB360;
 }
 
 .green_btn {
-	background-color: #3bb19b;
-	color: white;
+	color: #ECB360;
 	margin: 10px;
+}
+
+.white_btn{
+	background: linear-gradient(179.43deg, #5f2e0b 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
+	padding: 12px;
+	color: #ECB360;
+	font-size: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 @media screen and (max-width:768px) {

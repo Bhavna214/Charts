@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'beyond_wonderlandregular';
+    src: url('./beyond_wonderland-webfont.woff2') format('woff2'),
+         url('./beyond_wonderland-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .login_container {
 	/* width: 100%;
 	min-height: 100vh;
@@ -6,31 +14,36 @@
 	align-items: center;
 	justify-content: center; */
 	display: none;
-
-
-	display: grid;
     place-content: center;
     height: 100vh;
-    background-color:#C9CED3;
+    /* background-color:#C9CED3; */
+	background: url(./index.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'beyond_wonderlandregular';
+	border-radius: 10px;
 }
 
 .login_form_container {
-	width: 60vw;
-	height: 60vh;
+	width: 35vw;
+	/* height: 45vh; */
 	display: flex;
+	flex-direction: column;
 	border-radius: 20px;
 	box-shadow: 0 15px 30px 5px rgba(0,0,0,0.5);
 }
 
 .left {
+	margin-top: 2rem;
 	flex: 0.65;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
+	background-color: #BF7B35;
+	padding-top: 10px ;
+	border-bottom: 2px solid black;
+	border-radius: 10px;
 }
 
 .form_container {
@@ -47,13 +60,19 @@
 
 .input {
 	outline: none;
-	border: none;
+	/* border: none; */
 	width: 80%;
-	padding: 15px;
-	border-radius: 10px;
-	background-color: #edf5f3;
+	padding: 10px;
+	/* border-radius: 10px;
+	background-color: #edf5f3; */
 	margin: 5px 0;
-	font-size: 14px;
+	/* font-size: 14px; */
+	background: linear-gradient(179.43deg, #bb6f39 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
+    color: #ECB360;
+	font-weight: 700;
+	font-size: 1.5rem;
 }
 
 .error_msg {
@@ -70,40 +89,51 @@
 .right {
 	flex: 0.35;
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	align-items: center;
-	justify-content: center;
-	background-color: #3bb19b;
-	border-top-right-radius: 10px;
-	border-bottom-right-radius: 10px;
+	justify-content: space-around;
+	background-color: #BF7B35;
+	padding-bottom: 10px;
+	border-radius: 10px;
 }
+
 
 .right h1 {
 	margin-top: 0;
-	color: white;
-	font-size: 40px;
+	color: black;
+	font-size: 25px;
 	align-self: center;
 }
 
-.white_btn,
 .green_btn {
-	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
-	border-radius: 20px;
+	background: linear-gradient(179.43deg, #5f2e0b 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
 	width: 180px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 1.5rem;
 	cursor: pointer;
+	color: #ECB360;
 }
 
 .green_btn {
 	background-color: #3bb19b;
-	color: white;
+	color: #ECB360;
 	margin: 10px;
 }
 
+.white_btn{
+	background: linear-gradient(179.43deg, #5f2e0b 11.93%, #401e07 80.94%);
+    border: 3px solid #ECB360;
+    border-radius: 31px;
+	padding: 12px;
+	color: #ECB360;
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+	margin-top: 1rem;
+}
 
 @media screen and (max-width:768px) {
 	.login_form_container{

@@ -5,6 +5,7 @@ import axios from "axios";
 import {Link, Route, Router } from "react-router-dom"
 import image from './image.png'
 
+
 const Login = () => {
 	// const [data, setData] = useState({password: "",username: ""});
 
@@ -114,7 +115,7 @@ function enterTeacher(){
 		<div className='validator__container'> 
 		  <div className="container">
 			  <div className="headingContainer">
-				  <h2>Welcome To BUG SQUASHERS</h2>
+				  <h2>WELCOME TO BUG SQUASHERS</h2>
 				  <img src={image} alt="" />
 			  </div>
   

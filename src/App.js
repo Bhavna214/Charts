@@ -7,77 +7,75 @@ import { UserData } from "./data";
 import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login/Login";
-import Signup from "./components/SignUp/signup";
+import Signup from "./components/SignUp/SignUp";
 import {
   BrowserRouter,
   Routes, 
   Route,
 } from "react-router-dom";
 function App() {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.level),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: UserData.map((data) => data.Solved),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          // "#f3ba2f",
-          // "#2a71d0",
-        ],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
+  // const [userData, setUserData] = useState({
+  //   labels: UserData.map((data) => data.level),
+  //   datasets: [
+  //     {
+  //       label: "Users Gained",
+  //       data: UserData.map((data) => data.Solved),
+  //       backgroundColor: [
+  //         "rgba(75,192,192,1)",
+  //         "#ecf0f1",
+  //         "#50AF95",
+  //         // "#f3ba2f",
+  //         // "#2a71d0",
+  //       ],
+  //       borderColor: "black",
+  //       borderWidth: 2,
+  //     },
+  //   ],
+  // });
 
-  const [lineData, setLineData] = useState({
-    labels: LineData.map((data) => data.puzzle),
-    datasets: [
-      {
-        label: "Time",
-        data: LineData.map((data) => data.time),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
+  // const [lineData, setLineData] = useState({
+  //   labels: LineData.map((data) => data.puzzle),
+  //   datasets: [
+  //     {
+  //       label: "Time",
+  //       data: LineData.map((data) => data.time),
+  //       backgroundColor: [
+  //         "rgba(75,192,192,1)",
+  //         "#ecf0f1",
+  //         "#50AF95",
+  //         "#f3ba2f",
+  //         "#2a71d0",
+  //       ],
+  //       borderColor: "black",
+  //       borderWidth: 2,
+  //     },
+  //   ],
+  // });
 
   // IF YOU SEE THIS COMMENT: I HAVE GOOD EYESIGHT
 
   return (
     <div className="App">
-      {/* <NavBar></NavBar>
-      <Signup></Signup> */}
-    {/* <BrowserRouter>
+    <BrowserRouter>
         <Routes>
               <Route path="/home" element={<NavBar/>}/>
               <Route path="/signup" element={<Signup/>}/>
               <Route path="/" element={<Login></Login>}/>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
 
         {/* <div style={{ width: 700 }}>
         <BarChart chartData={userData} />
-      </div>  */}
-      <div className="graphContainer">
+      </div> 
+       <div className="graphContainer">
         <div className="lineChart" >
           <LineChart chartData={lineData} />
         </div>
         <div className="pieChart" >
           <PieChart chartData={userData} />
         </div>
-      </div>
+      </div> */}
     </div>
 
   );
