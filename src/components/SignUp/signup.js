@@ -1,13 +1,14 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
+import axios from "axios";
 import {Link } from "react-router-dom"
 
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		fullname: "",
+		username: "",
 		email: "",
-		password: "",
+		password: ""
 	});
 	const [error, setError] = useState("");
 
@@ -18,10 +19,11 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
-			// const { data: res } = await axios.post(url, data);
+			const url = "http://localhost:3031/students/register";
+			const { data: res } = await axios.post(url, data);
+			console.log(res);
 			// navigate("/login");
-			// console.log(res.message);
+			
 		} catch (error) {
 			if (
 				error.response &&
@@ -49,19 +51,19 @@ const Signup = () => {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
-							name="firstName"
+							placeholder="Full Name"
+							name="fullname"
 							onChange={handleChange}
-							value={data.firstName}
+							value={data.fullname}
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
-							placeholder="Last Name"
-							name="lastName"
+							placeholder="Username"
+							name="username"
 							onChange={handleChange}
-							value={data.lastName}
+							value={data.username}
 							required
 							className={styles.input}
 						/>
