@@ -1,7 +1,7 @@
 import { useState } from "react"
 import '../css/navbar.css'
 
-export default function Navbar() {
+export default function Navbar({user}) {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   return (
@@ -27,21 +27,40 @@ export default function Navbar() {
         className={
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }
-      >
+      >{
+        user==='Teacher'?(
         <ul>
           <li>
-            <a href="/home">Dashboard</a>
+            <a href="/teacher/home">Dashboard</a>
           </li>
           <li>
-            <a href="/analytics">Analysis</a>
+            <a href="/teacher/analytics">Analysis</a>
           </li>
           <li>
-            <a href="/teams">My Teams</a>
+            <a href="/teacher/teams">My Teams</a>
           </li>
           <li>
-            <a href="/">Login</a>
+            <a href="/"  onClick={()=>{sessionStorage.removeItem("Teacher Data")}}>Logout</a>
+          </li>
+        </ul>):
+        (
+          <ul>
+          <li>
+            <a href="/student/home">Dashboard</a>
+          </li>
+          <li>
+            <a href="/student/analytics">Analysis</a>
+          </li>
+          <li>
+            <a href="/student/teams">My Teams</a>
+          </li>
+          <li>
+            <a href="/">Logout</a>
           </li>
         </ul>
+        )
+      }
+        
       </div>
     </nav>
   );

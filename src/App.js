@@ -13,6 +13,9 @@ import {
   Routes, 
   Route,
 } from "react-router-dom";
+import Studenthome from "./components/Studenthome";
+import Teacherhome from "./components/Teacherhome"
+import TeacherAnalytics from "./components/TeacherAnalytics";
 function App() {
   // const [userData, setUserData] = useState({
   //   labels: UserData.map((data) => data.level),
@@ -58,6 +61,9 @@ function App() {
     <div className="App">
     <BrowserRouter>
         <Routes>
+              <Route path="/teacher/analytics" element={<TeacherAnalytics/>}></Route>
+              <Route path='/teacher/home' element={<Teacherhome/>}></Route>
+              <Route path='/student/home' element={<Studenthome/>}></Route>
               <Route path="/home" element={<NavBar/>}/>
               <Route path="/signup" element={<Signup/>}/>
               <Route path="/" element={<Login></Login>}/>
