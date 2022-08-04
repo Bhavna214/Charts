@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./NavBar";
 import axios from '../axios'
 import "../css/TeacherAnalytics.css"
-
+import '../components/StudentInfo'
 
 const TeacherAnalytics = () => {
 
     let [students,setStudents]=useState([{}]);
+    let [name,setName]=useState("");
+    let [username,setUsername]=useState("");
+    let [email,setEmail]=useState("");
+
+    const[sBadges,setSBadges]=useState("");
 
     const getStudents = async ()=>{
         let headersList = {
@@ -33,6 +38,23 @@ const TeacherAnalytics = () => {
 
 
 
+     function studentInfo(e){
+        console.log(e)
+        console.log(e.target.innerText);
+        let id = e.target.innerText;
+        students?.map((student)=>{
+            if(student._id===id){
+                 setName(name=student.fullname);
+                 setEmail(email=student.email);
+                 setUsername(username=student._id);
+                //  console.log(name);
+                }
+             })       
+        
+    }
+
+
+
   return (
     <>
     <Navbar user="Teacher"/>
@@ -40,10 +62,10 @@ const TeacherAnalytics = () => {
       <div className="student-list">
         {
             students && students.map((student)=>{
-                return <div  className="studentListItem">
+                return <div onClick={studentInfo} key={student._id} className="studentListItem">
                             <div className="Avatar"></div>
                             <div className="studentName">
-                                <p>{student.fullname}</p>
+                                <p>{student._id}</p>
                             </div>
                        </div>
             })
@@ -51,7 +73,16 @@ const TeacherAnalytics = () => {
 
       </div>
       <div className="student-analysis">Student-Analysis</div>
-      <div className="student-panel">Student-Panel</div>
+      <div className="student-panel">
+       { 
+                <div className="infoContainer">
+                <p>{name}</p>
+                <p>{email}</p>
+                <p>{username}</p>
+    </div>
+
+       } 
+      </div>
     </div>
     </>
   );
