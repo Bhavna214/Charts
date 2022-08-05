@@ -3,6 +3,13 @@ import Navbar from "./NavBar";
 import axios from '../axios'
 import "../css/TeacherAnalytics.css"
 import '../components/StudentInfo'
+import '../components/MultiLineChart'
+import MultiLineChart from "../components/MultiLineChart";
+import { UserData } from '../data';
+import LineChart from "./LineChart";
+
+
+import { Chart } from "react-google-charts";
 
 const TeacherAnalytics = () => {
 
@@ -12,6 +19,26 @@ const TeacherAnalytics = () => {
     let [email,setEmail]=useState("");
 
     const[sBadges,setSBadges]=useState("");
+
+     const [data,setData] = useState([
+      ["Puzzle", "Easy", "Medium", "Hard"],
+      ["P1", 0, 0, 0],
+      ["P2", 0, 0, 0],
+      ["P3", 0, 0, 0],
+      ["P4", 0,0,0 ],
+      ["P5", 0, 0,0],
+      ["P6", 0, 0,0],
+      ["P7", 0, 0,0],
+    ]);
+
+
+    const options = {
+      chart: {
+        title: "Time Analytics",
+        subtitle: "For all difficulty levels at each puzzle",
+      },
+    };
+    
 
     const getStudents = async ()=>{
         let headersList = {
@@ -47,9 +74,28 @@ const TeacherAnalytics = () => {
                  setName(name=student.fullname);
                  setEmail(email=student.email);
                  setUsername(username=student._id);
+                
+                let times = [["Puzzle", "Easy", "Medium", "Hard"]];
+
+                student.level?.map((obj,index)=>{
+                  let timeArray=[];
+                  let puzzleTimeArray = obj.time;
+                  let puzzle = `P${index+1}`;
+                  timeArray.push(puzzle)
+                  puzzleTimeArray.map((difficultyTimeArray)=>{
+                  let avg = difficultyTimeArray.reduce((a, b) => a + b, 0) / difficultyTimeArray.length;
+                  timeArray.push(avg);
+                  })
+                  times.push(timeArray)
+                })
+                
+                console.log(times);
+                setData(times);
+
                 //  console.log(name);
                 }
-             })       
+             })
+              
         
     }
 
@@ -72,14 +118,22 @@ const TeacherAnalytics = () => {
         }
 
       </div>
-      <div className="student-analysis">Student-Analysis</div>
+      <div className="student-analysis">
+                <Chart
+                chartType="Bar"
+                width="100%"
+                height="400px"
+                data={data}
+                options={options}
+              />
+      </div>
       <div className="student-panel">
        { 
-                <div className="infoContainer">
+              <div className="infoContainer">
                 <p>{name}</p>
                 <p>{email}</p>
                 <p>{username}</p>
-    </div>
+              </div>
 
        } 
       </div>
