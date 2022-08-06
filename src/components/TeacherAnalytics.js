@@ -31,15 +31,15 @@ const TeacherAnalytics = () => {
     ["P7", 0, 0, 0],
   ]);
 
-  const [score, setScore] = useState([
-    ["Puzzle", "Easy", "Medium", "Hard"],
-    ["P1", 0, 0, 0],
-    ["P2", 0, 0, 0],
-    ["P3", 0, 0, 0],
-    ["P4", 0, 0, 0],
-    ["P5", 0, 0, 0],
-    ["P6", 0, 0, 0],
-    ["P7", 0, 0, 0],
+  const [scoreData, setScoreData] = useState([
+    ["Score", "Puzzle"],
+    ["P1", 0],
+    ["P2", 0],
+    ["P3", 0],
+    ["P4", 0],
+    ["P5", 0],
+    ["P6", 0],
+    ["P7", 0],
   ]);
 
 
@@ -54,15 +54,10 @@ const TeacherAnalytics = () => {
     colors: ["#BF7B35", "#401e07", "#dfbb97"],
   };
 
-  const options1 = {
-    chart: {
-      title: "Score Analytics",
-      subtitle: "For all difficulty levels at each puzzle",
-    },
-    vAxis: {
-      title: "Score",
-    },
-    colors: ["#BF7B35", "#401e07", "#dfbb97"],
+  const scoreOptions = {
+    title: "Score Performance",
+    curveType: "function",
+    legend: { position: "bottom" },
   };
 
 
@@ -102,38 +97,28 @@ const TeacherAnalytics = () => {
         setUsername(username = student._id);
 
         let times = [["Puzzle", "Easy", "Medium", "Hard"]];
+                let scores =[["Score", "Puzzle"]];
 
-        student.level?.map((obj, index) => {
-          let timeArray = [];
-          let puzzleTimeArray = obj.time;
-          let puzzle = `P${index + 1}`;
-          timeArray.push(puzzle)
-          puzzleTimeArray.map((difficultyTimeArray) => {
-            let avg = difficultyTimeArray.reduce((a, b) => a + b, 0) / difficultyTimeArray.length;
-            timeArray.push(avg);
-          })
-          times.push(timeArray)
-        })
-
-        console.log(times);
-        setData(times);
-
-        let scores = [["Puzzle", "Easy", "Medium", "Hard"]];
-
-        student.level?.map((obj, index) => {
-          let scoreArray = [];
-          let puzzleScoreArray = obj.score;
-          let puzzle = `P${index + 1}`;
-          scoreArray.push(puzzle)
-          puzzleScoreArray.map((difficultyScoreArray) => {
-            let avg = difficultyScoreArray.reduce((a, b) => a + b, 0) / difficultyScoreArray.length;
-            scoreArray.push(avg);
-          })
-          scores.push(scoreArray)
-        })
-
-        console.log(scores);
-        setScore(scores);
+                student.level?.map((obj,index)=>{
+                  let timeArray=[];
+                  let scoreArray=[];
+                  let puzzleTimeArray = obj.time;
+                  let puzzle = `P${index+1}`;
+                  scoreArray.push(puzzle);
+                  scoreArray.push(Number(obj.score));
+                  scores.push(scoreArray);
+                  timeArray.push(puzzle)
+                  puzzleTimeArray.map((difficultyTimeArray)=>{
+                  let avg = difficultyTimeArray.reduce((a, b) => a + b, 0) / difficultyTimeArray.length;
+                  timeArray.push(avg);
+                  })
+                  times.push(timeArray)
+                })
+                
+                console.log(times);
+                setData(times);
+                console.log(scores);
+                setScoreData(scores);
 
         //  console.log(name);
       }
@@ -174,12 +159,12 @@ const TeacherAnalytics = () => {
 
           <div className="score-analysis">
           <Chart
-            chartType="Bar"
-            width="100%"
-            height="400px"
-            data={score}
-            options={options1}
-          />
+                    chartType="LineChart"
+                    width="100%"
+                    height="400px"
+                    data={scoreData}
+                    options={scoreOptions}
+                />
           </div>
         </div>
         <div className="student-panel">
