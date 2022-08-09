@@ -49,11 +49,11 @@ export default function Navbar({user}) {
             <a href="/student/home">Dashboard</a>
           </li>
           <li>
-            <a href="/student/analytics">Analysis</a>
+            <a href="/student/analytics">Help Room</a>
           </li>
-          <li>
+          {/* <li>
             <a href="/student/teams">My Teams</a>
-          </li>
+          </li> */}
           <li>
             <a href="/">Logout</a>
           </li>

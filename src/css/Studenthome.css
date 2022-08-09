@@ -1,0 +1,97 @@
+
+.mainContainer{
+    display: flex;
+}
+
+.studentProfileContainer{
+    flex: 0.35;
+    border-right: 1px solid whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.studentAnalyticsContainer{
+    flex: 0.65;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    width: 100%;
+    max-height: 100%;
+}
+
+.studentAnalyticsContainer ::-webkit-scrollbar{
+    display: none;
+}
+
+
+.performanceTitle{
+   align-self: flex-start;
+   margin-left: 15%;
+   font-size: 25px;
+    font-family: 'Berkshire cursive';
+    margin-top: 10px;
+    margin-bottom: -20px;
+    font-weight: 600;
+}
+
+.profileTitle{
+    align-self: flex-start;
+    margin: 0 auto;
+    font-size: 25px;
+    font-family: 'Berkshire cursive';
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.time-analysis{
+    background-color: white;
+    width: 70% !important;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.score-analysis{
+    background-color: white;
+    width: 70% !important;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 1rem 0 !important;
+}
+
+.userAvatar{
+    width: 50%;
+    border-radius: 50%;
+    margin-top: 20px;
+    /* margin: 0 auto; */
+}
+
+.userAvatar img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.infoContainer{
+    align-self: baseline;
+    margin-left: 5%;
+}
+
+hr.hr-17 {
+    width: 100%;
+    border: 0;
+    height: 0;
+    box-shadow: 0 0 5px 2px  white;
+  }
+  
+  hr.hr-17:after {
+    content: "\00a0";
+  }
+  
+
+.basicInfo{
+    margin-left: 10%;
+    width: 100%;
+}

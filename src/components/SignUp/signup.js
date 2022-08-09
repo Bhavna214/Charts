@@ -1,39 +1,114 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import axios from "axios";
+import axios from "../../axios";
 import {Link } from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
 const Signup = () => {
+	let navigate = useNavigate();
 	const [data, setData] = useState({
 		fullname: "",
 		username: "",
 		email: "",
 		password: ""
 	});
+	const [sub,setSub] = useState("");
 	const [error, setError] = useState("");
+	const [userRole,setUserRole]=useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
 
+	const setSubject = (e) =>{
+		setSub(e.target.value);
+	}
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		try {
-			const url = "http://localhost:3031/students/register";
-			const { data: res } = await axios.post(url, data);
-			console.log(res);
-			// navigate("/login");
-			
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
+
+		if(userRole==="Student"){
+			console.log(data);
+			try {
+				let headersList = {
+					Accept: "*/*",
+					"Content-Type": "application/json",
+				  };
+				let bodyContent = JSON.stringify(data);
+				let reqOptions = {
+					url: "/students/register",
+					method: "POST",
+					headers: headersList,
+					data: bodyContent,
+				  };
+				  let response = await axios.request(reqOptions);
+				console.log(response);
+
+				if(response){
+					console.log(response.data);
+					navigate("/", { replace: true });
+				  }
+
+				// navigate("/login");
+				
+			} catch (error) {
+				if (
+					error.response &&
+					error.response.status >= 400 &&
+					error.response.status <= 500
+				) {
+					setError(error.response.data.message);
+				}
 			}
+
+		}else{
+			
+			try{
+				let headersList = {
+					Accept: "*/*",
+					"Content-Type": "application/json",
+				  };
+				let reqBody = data;
+				reqBody.subject =sub;
+				console.log(reqBody)
+				let bodyContent = JSON.stringify(reqBody);
+				console.log(bodyContent)
+				let reqOptions = {
+					url: "/teachers/register",
+					method: "POST",
+					headers: headersList,
+					data: bodyContent,
+				  };
+
+				  let response = await axios.request(reqOptions);
+				  console.log(response);
+  
+				  if(response){
+					  console.log(response.data);
+					  navigate("/", { replace: true });
+					}
+			}catch (error) {
+				if (
+					error.response &&
+					error.response.status >= 400 &&
+					error.response.status <= 500
+				) {
+					setError(error.response.data.message);
+				}
+			}
+
 		}
+
+
+		
 	};
+
+
+	useEffect(()=>{
+		let userRole = localStorage.getItem("userRole");
+		console.log(userRole);
+		setUserRole(userRole);
+	},[])
 
 	return (
 		<div className={styles.signup_container}>
@@ -85,6 +160,22 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+
+						{userRole === "Teacher" && 
+						<input
+							type="Text"
+							placeholder="Subject"
+							name="sub"
+							onChange={setSubject}
+							value={sub}
+							required
+							className={styles.input}
+						/>
+						
+						
+						}
+
+
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sign Up

@@ -11,15 +11,22 @@
 
 .student-list {
     margin: 2rem;
+    margin-bottom: 10px;
     border: 3px solid #BF7B35;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
     flex: 0.25;
     width: 80%;
-    min-height: fit-content;
+    /* min-height: fit-content; */
+    max-height: 85vh;
+    overflow-y: scroll;
+}
+
+.student-list::-webkit-scrollbar{
+    display: none;
 }
 
 .student-analysis {
@@ -30,6 +37,11 @@
     justify-content: center;
     flex: 0.5;
     width: 100%;
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+.student-analysis::-webkit-scrollbar{
+    display: none;
 }
 
 .time-analysis {
@@ -62,6 +74,7 @@
     cursor: pointer;
     background-color: #BF7B35;
     color: #401e07;
+    border-radius: 20px;
 }
 
 .studentListItem:active{
@@ -73,6 +86,7 @@
 .student-panel {
     flex: 0.25;
     margin: 2rem;
+    margin-bottom: 10px;
     border: 3px solid #BF7B35;
     border-radius: 20px;
     display: flex;

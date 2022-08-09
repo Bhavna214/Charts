@@ -40,10 +40,12 @@ const Login = () => {
       };
 
       let response = await axios.request(reqOptions);
-	  if(response){
-		console.log(response.data);
-		navigate("/student/home", { replace: true });
-	  }
+      if(response){
+        console.log(response.data);
+        sessionStorage.setItem("Student Data", JSON.stringify(response.data));
+        navigate("/student/home", { replace: true });
+        }
+	
     
 
     } else {
@@ -75,12 +77,14 @@ const Login = () => {
   function enterStudent() {
     document.querySelector(".validator__container").style.display = "none";
     setWhoIsEntering("student");
+    localStorage.setItem("userRole","Student")
     document.querySelector(".login__container").style.display = "grid";
   }
 
   function enterTeacher() {
     document.querySelector(".validator__container").style.display = "none";
     setWhoIsEntering("teacher");
+    localStorage.setItem("userRole","Teacher")
     document.querySelector(".login__container").style.display = "grid";
   }
 
