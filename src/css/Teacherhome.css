@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Cormorant+SC&family=Nunito:wght@200;300;400;600;700&family=Playfair+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
 .teacher-main{
     width: 100%;
     height: 100%;
     display: flex;
+    font-family: 'Berkshire Swash', cursive;
 }
 
-.leftSidebar{
+.leftSideBar{
     flex: 0.75;
     background-color: white;
     color: black;
@@ -12,9 +15,35 @@
     height: 90vh;
 }
 
-.rightSidebar{
+.rightSideBar{
     flex: 0.25;
-    background-color: aqua;
+    background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
+    border: 3px solid #BF7B35;
+    color: #BF7B35;
     width: 100%;
     height: 90vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    margin:1rem;
+    border-radius: 20px;
+}
+
+.rightSideBar h4{
+    margin-top: 1rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.bold{
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.data{
+    padding: 1rem;
 }
