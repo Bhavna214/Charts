@@ -94,6 +94,7 @@ const TeacherAnalytics = () => {
     let id = e.target.innerText;
     students?.map((student) => {
       if (student._id === id) {
+        console.log(student);
         setName((name = student.fullname));
         setEmail((email = student.email));
         setUsername((username = student._id));
@@ -158,9 +159,12 @@ const TeacherAnalytics = () => {
               difficultyTimeArray.length;
             timeArray.push(avg);
           });
-          scoreArray.map((score, index) => {
-            console.log(scoreObject.datasets[index].data.push(score));
-          });
+          if(scoreArray){
+            scoreArray.map((score, index) => {
+              console.log(scoreObject.datasets[index].data.push(score));
+            });
+          }
+          
           timeArray.map((value, index) => {
             dataObject.datasets[index].data.push(value);
           });

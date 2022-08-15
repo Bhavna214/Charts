@@ -7,13 +7,14 @@ import { useEffect, useState } from 'react';
 const Teacherhome = () => {
 
   let [tData, setTData] = React.useState({});
+  let [leaderBoardArray,setLeaderBoardArray]=useState([]);
   let [students, setStudents] = useState([{}]);
 
   React.useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Teacher Data"))
     if (data) {
       setTData(tData = data);
-      console.log(tData);
+      // console.log(tData);
     }
   }, [])
 
@@ -40,32 +41,63 @@ const Teacherhome = () => {
     getStudents();
   }, [])
 
-  const GoldStudent = () => {
-    let goldArray = []
-    let silverArray = []
-    let bronzeArray = []
-    // console.log(e)
-    students?.map((student) => {
-      student?.level?.map((obj, index) => {
-        if (obj.badges === "gold") {
-          goldArray.push(student.fullname)
-        }
-        if (obj.badges === "bronze") {
-          bronzeArray.push(student.fullname)
-        }
-        if (obj.badges === "silver") {
-          silverArray.push(student.fullname)
-        }
-      })
+  const sortStudents =(array) =>{
+    console.log(array.sort((a, b) => {
+      return b.avg - a.avg;
     })
-    console.log(goldArray)
-    console.log(silverArray)
-    console.log(bronzeArray)
+    )
+    
+  
+  }
+
+
+
+
+  const calculateLeaderBoardAvg = () => {
+
+    let puzzleWiseScoreAvgArray = [];
+    // let obj={};
+    
+    students?.map((student) => {
+      let obj = {
+        id : student._id,
+        fullname:student.fullname,
+        badges:[],
+        avg : 0
+      }
+      let levelWiseAvgArray = [];
+      student?.level?.map((level)=>{
+        let levelScoreArray=[];
+        if(level.score[0]){
+          levelScoreArray=level.score[0];
+        }else{
+          levelScoreArray=[0,0,0]
+        }
+        let avg =
+              levelScoreArray.reduce((a, b) => a + b, 0) /
+              levelScoreArray.length;
+          levelWiseAvgArray.push(avg);
+        obj.badges.push(level.badges);
+      })
+
+      let levelwiseAvg =
+      levelWiseAvgArray.reduce((a, b) => a + b, 0) /
+      levelWiseAvgArray.length;
+      
+      obj.avg=levelwiseAvg;
+      
+      puzzleWiseScoreAvgArray.push(obj)
+      
+    })
+    console.log(puzzleWiseScoreAvgArray)
+    setLeaderBoardArray(leaderBoardArray=puzzleWiseScoreAvgArray);
+    console.log(leaderBoardArray)
+    sortStudents(leaderBoardArray);
   }
 
   useEffect(() => {
-    GoldStudent();
-  }, [])
+    calculateLeaderBoardAvg();
+  }, [students])
 
   let puzzleList=[]
   
@@ -75,25 +107,66 @@ const Teacherhome = () => {
       <Navbar user="Teacher"></Navbar>
 
       <div className="teacher-main">
-        <div className="leftSideBar" style={{ color: "white" }}>
-          <div className='puzzleList'>
-            {
-              students[0]?.level?.map((obj,index)=>{
-                puzzleList.push(`P${index+1}`)
-                console.log(puzzleList)
-
-                // return(
-                //   <div>
-                //     {`P${index+1}`}
-                //   </div>
-                // )
-              })
-            }
+        <div className="leftSideBar" style={{ color: "Black" }}>
+          <div className="leaderBoardHeading">
+              <h2>LEADERBOARD</h2>
           </div>
+          <div className="headingContainer">
+              <div className="infoHeadingContainer">
+                  <h3>Student Name</h3>
+                  <h3>Score</h3> 
+              </div>
+              <div className="badgesHeadingContainer">
+                    <h3>Badges</h3>
+              </div>
+            </div>
+          <div className="leaderBoard">
+            
+          {/* <table >
+                          <tr>
+                            <th>Username</th>
+                            <th>score</th>
+                            <th>badges</th>
+                          </tr>  */}
+                {leaderBoardArray.map((student)=>{
+                  return <div className="studentListItemHome">
+                         <div className="Avatar"></div>
+                        <div className="studentInfo">
+                          <div className="studentName">
+                          <p>{student.fullname}</p>
+                          </div>
+                          <div className="studentScore">
+                            <span>{Number(student.avg.toFixed(2))}</span>
+                          </div>
+                        </div>
+                        <div className="badges">
+                          {student.badges.map((badge)=>{
+                              return <p>{badge}</p>
+                            })}
+                          </div>
+                        </div>
+                    
+                    
+                  // return <>
+                  //         <tr className="studentListItem">
+                  //           <td>{student.fullname}</td>
+                  //           <td>{student.avg}</td>
+                  //           <td className='badgeList'>{student.badges.map((badge)=>{
+                  //             return <p>{badge}</p>
+                  //           })}</td>
+                  //         </tr>
+                  //         </>
+                  
+                })}
+                {/* </table> */}
+            </div>
         </div>
+    
+
+
         <div className="rightSideBar">
           <h4>MY PROFILE</h4>
-          <table>
+          <table className='profile-bar'>
             <tr>
               <td className='bold'>Name:</td>
               <td className='data'>{tData.fullname}</td>
@@ -113,8 +186,7 @@ const Teacherhome = () => {
           </table>
         </div>
       </div>
-
-    </div>
+      </div>
   )
 }
 

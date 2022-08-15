@@ -9,10 +9,18 @@
 
 .leftSideBar{
     flex: 0.75;
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    color: rgb(194, 191, 191) !important;
+    /* color: #BF7B35 !important; */
     width: 100%;
-    height: 90vh;
+    max-height: 90vh;
+    /* overflow-y: scroll; */
+    border-bottom: 2px solid #BF7B35;
+    margin: 0 20px;
+}
+
+.leftSideBar::-webkit-scrollbar{
+    display: none;
 }
 
 .rightSideBar{
@@ -21,7 +29,7 @@
     border: 3px solid #BF7B35;
     color: #BF7B35;
     width: 100%;
-    height: 90vh;
+    max-height: 92vh;
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -34,7 +42,7 @@
     margin-top: 1rem;
 }
 
-table{
+.profile-bar{
     width: 100%;
     border-collapse: collapse;
 }
@@ -46,4 +54,105 @@ table{
 
 .data{
     padding: 1rem;
+}
+
+
+.badgeList{
+    display: flex;
+}
+
+table tr{
+    width:100%;
+}
+
+table td{
+    padding:1rem;
+    margin:1rem;
+}
+
+.leaderBoardHeading{
+    width: 100%;
+   margin: 10px;
+}
+
+.leaderBoardHeading h2{
+    border-bottom: 4px solid #401e07;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+.leaderBoard{
+    width: 100%;
+    max-height: 70vh;
+    padding: 20px;
+    padding-top: 0;
+    overflow-y: scroll;
+}
+
+.leaderBoard::-webkit-scrollbar{
+    display: none;
+}
+.headingContainer{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border : 2px solid #BF7B35;
+    margin: 0 20px;
+}
+
+
+
+.infoHeadingContainer{
+    flex:0.34;
+    display:flex;
+    justify-content: space-between;
+}
+
+.badgesHeadingContainer{
+    display: flex;
+    justify-content: center;
+    flex: 0.66;
+}
+
+.studentListItemHome{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid #BF7B35;
+    border-left: 2px solid #BF7B35;
+    border-right: 2px solid #BF7B35;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+
+/* .studentListItem:first-child{
+    border-top: 2px solid #BF7B35;
+} */
+
+.studentInfo{
+    display:flex;
+    flex: 0.33;
+    justify-content: space-between;
+}
+
+.studentName{
+    padding-left: 20px;
+}
+
+.studentScore{
+    padding-left: 40px;
+}
+
+.badges{
+    display: flex;
+    justify-content: center;
+    flex:0.67;
+}
+
+.badges p{
+    margin:  0 10px;
 }

@@ -72,16 +72,18 @@ const Studenthome = () => {
       let puzzleTimeArray = obj.time;
       let scoreArray = obj.score[0];
       console.log(scoreArray)
-      puzzleTimeArray.map((difficultyTimeArray) => {
+      puzzleTimeArray?.map((difficultyTimeArray) => {
         let avg =
           difficultyTimeArray.reduce((a, b) => a + b, 0) /
           difficultyTimeArray.length;
         timeArray.push(avg);
       });
-      scoreArray.map((score,index)=>{
-        console.log(scoreObject.datasets[index].data.push(score))
-      })
-      timeArray.map((value, index) => {
+      if(scoreArray){
+        scoreArray?.map((score,index)=>{
+          console.log(scoreObject.datasets[index].data.push(score))
+        })
+      }
+      timeArray?.map((value, index) => {
         dataObject.datasets[index].data.push(value);
       });
     });
