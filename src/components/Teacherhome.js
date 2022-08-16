@@ -3,6 +3,10 @@ import Navbar from './NavBar';
 import "../css/Teacherhome.css"
 import axios from '../axios'
 import { useEffect, useState } from 'react';
+import avatar from "../Assets/60111.jpg";
+import gold from '../Assets/gold medal.png'
+import silver from '../Assets/silver medal.png'
+import bronze from '../Assets/bronze medal.png'
 
 const Teacherhome = () => {
 
@@ -121,8 +125,8 @@ const Teacherhome = () => {
               </div>
             </div>
           <div className="leaderBoard">
-            
-          {/* <table >
+            <div className="lead">
+            {/* <table >
                           <tr>
                             <th>Username</th>
                             <th>score</th>
@@ -141,7 +145,19 @@ const Teacherhome = () => {
                         </div>
                         <div className="badges">
                           {student.badges.map((badge)=>{
-                              return <p>{badge}</p>
+                              return <div>
+                                {badge === 'gold' &&
+                                  <img src={gold} alt="" />
+                                }
+                                {
+                                  badge==='silver' && 
+                                  <img src={silver} alt="" />
+                                }
+
+                                {badge === 'bronze' && 
+                                  <img src={bronze} alt="" />
+                                }
+                                </div>
                             })}
                           </div>
                         </div>
@@ -160,12 +176,16 @@ const Teacherhome = () => {
                 })}
                 {/* </table> */}
             </div>
+            </div>
         </div>
     
 
 
         <div className="rightSideBar">
           <h4>MY PROFILE</h4>
+          <div className="userAvatar">
+                <img src={avatar} alt="" />
+            </div>
           <table className='profile-bar'>
             <tr>
               <td className='bold'>Name:</td>

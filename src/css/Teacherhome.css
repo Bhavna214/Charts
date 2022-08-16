@@ -15,8 +15,9 @@
     width: 100%;
     max-height: 90vh;
     /* overflow-y: scroll; */
-    border-bottom: 2px solid #BF7B35;
-    margin: 0 20px;
+    /* border-bottom: 2px solid #BF7B35; */
+    margin: 0 1.5rem;
+   
 }
 
 .leftSideBar::-webkit-scrollbar{
@@ -29,13 +30,17 @@
     border: 3px solid #BF7B35;
     color: #BF7B35;
     width: 100%;
-    max-height: 92vh;
+    max-height: 100vh;
     display: flex;
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     margin:1rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
     border-radius: 20px;
+    margin-top:3.6rem;
+    font-size: 20px;
 }
 
 .rightSideBar h4{
@@ -81,27 +86,42 @@ table td{
     margin: 0 auto;
 }
 
-
 .leaderBoard{
+    border: 2px solid #BF7B35;
+    padding: 15px 0;
+    padding-top: 0;
+    background:#f2f2f2;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+}
+.lead{
     width: 100%;
-    max-height: 70vh;
-    padding: 20px;
+    max-height: 69vh;
+    /* padding: 20px; */
     padding-top: 0;
     overflow-y: scroll;
+   
 }
 
-.leaderBoard::-webkit-scrollbar{
+.lead::-webkit-scrollbar{
     display: none;
 }
 .headingContainer{
     display: flex;
     flex-direction: row;
-    max-width: 100%;
+    width: 90%;
     justify-content: space-between;
     padding-left: 1rem;
     padding-top: 1rem;
     border : 2px solid #BF7B35;
-    margin: 0 20px;
+    /* margin: 0 20px; */
+    background:#e2dadad1;
+    color: #401e07;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0 auto;
 }
 
 
@@ -116,6 +136,7 @@ table td{
     display: flex;
     justify-content: center;
     flex: 0.66;
+    
 }
 
 .studentListItemHome{
@@ -123,10 +144,12 @@ table td{
     justify-content: space-between;
     width: 100%;
     border-bottom: 2px solid #BF7B35;
-    border-left: 2px solid #BF7B35;
-    border-right: 2px solid #BF7B35;
+    /* border-left: 2px solid #BF7B35; */
+    /* border-right: 2px solid #BF7B35; */
     padding: 10px 20px;
     font-size: 1.2rem;
+    background:#f2f2f2;
+    color: #401e07;
 }
 
 /* .studentListItem:first-child{
@@ -141,10 +164,12 @@ table td{
 
 .studentName{
     padding-left: 20px;
+    font-size: 25px;
 }
 
 .studentScore{
     padding-left: 40px;
+    font-size: 25px;
 }
 
 .badges{
@@ -153,6 +178,10 @@ table td{
     flex:0.67;
 }
 
-.badges p{
+.badges div{
     margin:  0 10px;
+}
+
+.badges div img{
+    width: 50px;
 }

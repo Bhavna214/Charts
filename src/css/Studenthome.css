@@ -1,14 +1,31 @@
 
 .mainContainer{
     display: flex;
+    font-family: 'Berkshire Swash', cursive;
 }
 
-.studentProfileContainer{
+.leftContainer{
     flex: 0.35;
-    border-right: 1px solid whitesmoke;
+    border: 2px solid #BF7B35;
+    margin: 15px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.singlestudentProfileContainer{
+   
+    /* border-right: 1px solid whitesmoke; */
     display: flex;
     align-items: center;
     flex-direction: column;
+    color: #BF7B35;
+    padding: 0 2rem; 
+    max-height: 84vh;
+    overflow-y:scroll;
+ 
+}
+.singlestudentProfileContainer::-webkit-scrollbar{
+    display: none;
 }
 
 
@@ -19,10 +36,11 @@
     /* justify-content: center; */
     flex-direction: column;
     width: 100%;
-    max-height: 100%;
+    max-height: 90vh;
+    overflow-y: scroll;
 }
 
-.studentAnalyticsContainer ::-webkit-scrollbar{
+.studentAnalyticsContainer::-webkit-scrollbar{
     display: none;
 }
 
@@ -31,7 +49,7 @@
    align-self: flex-start;
    margin-left: 15%;
    font-size: 25px;
-    font-family: 'Berkshire cursive';
+    font-family: 'Berkshire' cursive;
     margin-top: 10px;
     margin-bottom: -20px;
     font-weight: 600;
@@ -41,7 +59,7 @@
     align-self: flex-start;
     margin: 0 auto;
     font-size: 25px;
-    font-family: 'Berkshire cursive';
+    font-family: 'Berkshire' cursive;
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -49,14 +67,14 @@
 
 .time-analysis{
     background-color: white;
-    width: 70% !important;
+    width: 60% !important;
     padding: 20px;
     border-radius: 20px;
 }
 
 .score-analysis{
     background-color: white;
-    width: 70% !important;
+    width: 60% !important;
     padding: 20px;
     border-radius: 20px;
     margin: 1rem 0 !important;
@@ -74,9 +92,9 @@
     border-radius: 50%;
 }
 
-.infoContainer{
+.infoContainerStudent{
     align-self: baseline;
-    margin-left: 5%;
+    /* margin-left: 5%; */
 }
 
 hr.hr-17 {
@@ -91,8 +109,14 @@ hr.hr-17 {
   }
   
 
-.basicInfo{
-    margin-left: 10%;
+.basicInfoStudent{
+    /* margin-left: 10%; */
     width: 100%;
+    font-size: 20px;
+}
+
+.basicInfoSpan{
+    min-width: 150px;
+    display: inline-block;
 }
 

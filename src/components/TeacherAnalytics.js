@@ -3,18 +3,18 @@ import Navbar from "./NavBar";
 import axios from "../axios";
 import "../css/TeacherAnalytics.css";
 import { Bar, Line } from "react-chartjs-2";
-import MultiLineChart from "../components/MultiLineChart";
-import { UserData } from "../data";
-import LineChart from "./LineChart";
-
-import { Chart } from "react-google-charts";
+import avatar from "../Assets/60111.jpg";
+import gold from '../Assets/gold medal.png'
+import silver from '../Assets/silver medal.png'
+import bronze from '../Assets/bronze medal.png'
 
 const TeacherAnalytics = () => {
   let [students, setStudents] = useState([{}]);
   let [name, setName] = useState("");
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
-
+  let [attempted,setAttempted]=useState(["P1❌","P2❌","P3❌","P4❌","P5❌","P6❌","P7❌"]);
+  let [badges,setBadges]=useState([]);
   const [barData, setData] = useState({
     labels: "",
     datasets: [],
@@ -146,10 +146,22 @@ const TeacherAnalytics = () => {
             },
           ],
         };
-
+        let attemptArray=[];
+        let badgearray=[];
+        // attempted.length=0
+        setAttempted([]);
+        setBadges([]);
         student?.level?.map((obj, index) => {
           let timeArray = [];
+          
           // let scoreArray=[];
+          
+          if(obj.badges!=null){
+            badgearray.push(obj.badges);
+            attemptArray.push(true);
+          }else{
+            attemptArray.push(false);
+          }
           let puzzleTimeArray = obj.time;
           let scoreArray = obj.score[0];
           console.log(scoreArray);
@@ -159,16 +171,18 @@ const TeacherAnalytics = () => {
               difficultyTimeArray.length;
             timeArray.push(avg);
           });
-          if(scoreArray){
+          if (scoreArray) {
             scoreArray.map((score, index) => {
               console.log(scoreObject.datasets[index].data.push(score));
             });
           }
-          
+
           timeArray.map((value, index) => {
             dataObject.datasets[index].data.push(value);
           });
         });
+        setAttempted(attemptArray)
+        setBadges(badgearray);
         setData(dataObject);
         console.log(scoreObject);
         setScoreData(scoreObject);
@@ -302,10 +316,41 @@ const TeacherAnalytics = () => {
         </div>
         <div className="student-panel">
           {
-            <div className="infoContainer">
-              <p>{name}</p>
-              <p>{email}</p>
-              <p>{username}</p>
+            username && 
+            // <div className="infoContainer">
+            //   <p>{name}</p>
+            //   <p>{email}</p>
+            //   <p>{username}</p>
+            // </div>
+            <div className="studentProfileContainer">
+              <div className="userAvatar">
+                <img src={avatar} alt="" />
+              </div>
+
+              <h1 className="profileTitleStudents">{username}</h1>
+
+              <hr className="hr-17" />
+
+              <div className="infoContainerStudents">
+                <div className="basicInfoStudents">
+                  <p><span className="basicHeading">Name :</span> {name}</p>
+                  <p><span className="basicHeading">Username :</span> {username}</p>
+                  <p><span className="basicHeading">Email:</span> {email}</p>
+                </div>
+                <p className="attemptList"><span className="attemptSpan">Puzzles Status </span> <p className="puzzleList"> {attempted.map((puzzle,index)=>{return puzzle? <span className="attempt">P{index}<span className="symbol" >✔</span></span>:<span  className="attempt">P{index}<span className="symbol">❌</span></span> })}</p></p>
+                <p className="attemptList"><span className="attemptSpan">Badges</span> <p className="puzzleList"> {badges.map((badge,index)=>{return  <>
+                {badge==='gold' && 
+                <span className="attempt"><img src={gold}/></span>
+                }
+                {badge==='silver' && 
+                <span className="attempt"><img src={silver}/></span>
+                }
+                {badge==='bronze' && 
+                <span className="attempt"><img src={bronze}/></span>
+                }
+                </>
+                })}</p></p>
+              </div>
             </div>
           }
         </div>

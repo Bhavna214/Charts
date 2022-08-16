@@ -3,6 +3,10 @@ import { Bar, Line } from "react-chartjs-2";
 import Navbar from "./NavBar";
 import avatar from "../Assets/60111.jpg"
 import "../css/Studenthome.css";
+import gold from '../Assets/gold medal.png'
+import silver from '../Assets/silver medal.png'
+import bronze from '../Assets/bronze medal.png'
+
 
 const Studenthome = () => {
   const [sData, setSData] = React.useState(null);
@@ -15,6 +19,8 @@ const Studenthome = () => {
     labels: "",
     datasets: [],
   });
+  let [attempted,setAttempted]=useState(["P1❌","P2❌","P3❌","P4❌","P5❌","P6❌","P7❌"]);
+  let [badges,setBadges]=useState([]);
 
 
   function studentInfo() {
@@ -66,9 +72,17 @@ const Studenthome = () => {
         },
       ],
     };
+    let attemptArray=[];
+    let badgeArray=[];
     sData?.level?.map((obj, index) => {
       let timeArray = [];
       // let scoreArray=[];
+      if(obj.badges!=null){
+        badgeArray.push(obj.badges);
+        attemptArray.push(true);
+      }else{
+        attemptArray.push(false);
+      }
       let puzzleTimeArray = obj.time;
       let scoreArray = obj.score[0];
       console.log(scoreArray)
@@ -87,6 +101,8 @@ const Studenthome = () => {
         dataObject.datasets[index].data.push(value);
       });
     });
+    setAttempted(attemptArray);
+    setBadges(badgeArray)
     setData(dataObject);
     console.log(scoreObject)
     setScoreData(scoreObject);
@@ -108,7 +124,8 @@ const Studenthome = () => {
       <Navbar user="Student"></Navbar>
       <div className="mainContainer">
         {/* student profile */}
-        <div className="studentProfileContainer">
+        <div className="leftContainer">
+        <div className="singlestudentProfileContainer">
        
           <div className="userAvatar">
               <img src={avatar} alt="" />
@@ -118,13 +135,27 @@ const Studenthome = () => {
 
           <hr className="hr-17"/>
 
-          <div className="infoContainer">
-            <div className="basicInfo">
-              <p>Name : {sData?.fullname}</p>
-              <p>Username : {sData?._id}</p>
-              <p>Email: {sData?.email}</p>
+          <div className="infoContainerStudent">
+            <div className="basicInfoStudent">
+              <p><span className="basicInfoSpan">Name : </span>{sData?.fullname}</p>
+              <p><span className="basicInfoSpan">Username : </span>{sData?._id}</p>
+              <p><span className="basicInfoSpan">Email : </span>{sData?.email}</p>
             </div>
+            <p className="attemptList"><span className="attemptSpan">Puzzles Status </span> <p className="puzzleList"> {attempted.map((puzzle,index)=>{return puzzle? <span className="attempt">P{index}<span className="symbol" >✔</span></span>:<span  className="attempt">P{index}<span className="symbol">❌</span></span> })}</p></p>
+                <p className="attemptList"><span className="attemptSpan">Badges</span> <p className="puzzleList"> {badges.map((badge,index)=>{return  <>
+                {badge==='gold' && 
+                <span className="attempt"><img src={gold}/></span>
+                }
+                {badge==='silver' && 
+                <span className="attempt"><img src={silver}/></span>
+                }
+                {badge==='bronze' && 
+                <span className="attempt"><img src={bronze}/></span>
+                }
+                </>
+                })}</p></p>
           </div>
+        </div>
         </div>
 
         {/* student analytics */}

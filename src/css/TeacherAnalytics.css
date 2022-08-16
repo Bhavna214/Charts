@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80% !important;
     margin: 2rem 0;
 }
 
@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80% !important;
     margin:2rem 0;
     margin-top: 0;
 }
@@ -84,7 +84,6 @@
 }
 
 .student-panel {
-    flex: 0.25;
     margin: 2rem;
     margin-bottom: 10px;
     border: 3px solid #BF7B35;
@@ -94,8 +93,82 @@
     flex-wrap: wrap;
     background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
     flex: 0.25;
-    width: 80%;
+    max-width: 25%;
+    /* min-width: 425.19px; */
+    /* width: 25%; */
     min-height: fit-content;
-    padding: 2rem;
+    max-height: 85vh;
+    padding: 0 1rem;
     font-size: 1.25rem;
+    overflow-y: scroll;
+}
+
+.student-panel::-webkit-scrollbar{
+    display: none;
+}
+
+.studentProfileContainer{
+    border-right: none;
+}
+
+.userAvatar{
+    width: 60%;
+    margin: 10px auto;
+}
+
+.profileTitleStudents{
+    text-align: center;
+    font-size: 30px;
+}
+
+/* .userAvatar img{
+    margin: 0 auto;
+} */
+
+.infoContainer{
+    margin-left: 0;
+}
+
+.basicInfo{
+    margin-left: 0;
+}
+
+.basicHeading{
+    min-width: 100px;
+    display: inline-block;
+}
+
+.attemptSpan{
+    display: block;
+    text-align: center;
+    font-weight: 800;
+    text-decoration:underline;
+    color: #7e450b;
+}
+.attempt{
+    margin-right:20px;
+}
+
+.attempt img{
+    width: 45px;
+}
+
+.attemptList{
+    width: 100%;
+    font-size: 20px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-bottom: 3px;
+}
+
+.puzzleList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.symbol{
+    font-size: 20px;
 }

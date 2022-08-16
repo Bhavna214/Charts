@@ -92,7 +92,7 @@ const Login = () => {
     <>
       <div className="validator__container">
         <div className="container">
-          <div className="headingContainer">
+          <div className="headingContainerInitial">
             <h2>Welcome To Bug Squashers</h2>
             <img src={image} alt="" />
           </div>
