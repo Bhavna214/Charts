@@ -72,7 +72,7 @@ const TeacherAnalytics = () => {
     };
 
     let reqOptions = {
-      url: "/students",
+      url: "/students/getAllStudents",
       method: "GET",
       headers: headersList,
     };

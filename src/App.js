@@ -8,6 +8,8 @@ import { LineData } from "./LineData";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/SignUp";
+import Messenger from "./chatroom/messenger/Messenger";
+import HelpPanel from "./components/HelpPanel";
 import {
   BrowserRouter,
   Routes, 
@@ -63,6 +65,8 @@ function App() {
         <Routes>
               <Route path="/teacher/analytics" element={<TeacherAnalytics/>}></Route>
               <Route path='/teacher/home' element={<Teacherhome/>}></Route>
+              <Route path='/student/helproom/chat' element={<Messenger/>}></Route>
+              <Route path='/student/helproom' element={<HelpPanel/>}></Route>
               <Route path='/student/home' element={<Studenthome/>}></Route>
               <Route path="/home" element={<NavBar/>}/>
               <Route path="/signup" element={<Signup/>}/>
