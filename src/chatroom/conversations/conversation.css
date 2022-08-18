@@ -3,11 +3,39 @@
   align-items: center;
   padding: 10px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(122, 144, 151);
+ 
 }
 
-.conversation:hover {
+.conversation:hover{
+  cursor: pointer;
+  background-color: #BF7B35;
+  color: #401e07;
+  border-radius: 20px;
+}
+
+.conversation:active{
+  cursor: pointer;
+  background-color: #BF7B35 !important;
+  color: #401e07 !important;
+}
+
+/* .conversation:hover {
   background-color: rgb(245, 243, 243);
+  border-radius: 20px;
+} */
+
+.avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.avatar img{
+  width: 100%;
+  border-radius: 50%;
 }
 
 .conversationImg {

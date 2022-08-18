@@ -1,11 +1,19 @@
 .message {
   display: flex;
   flex-direction: column;
+  height: fit-content;
   margin-top: 20px;
+  flex-wrap: wrap;
+  max-height: fit-content;
+  /* margin-right: 20px; */
 }
 
 .messageTop{
     display: flex;
+    /* height: 500px; */
+    /* overflow: scroll; */
+    max-width: 300px;
+    /* overflow:scroll; */
 }
 
 .messageImg {
@@ -16,12 +24,26 @@
   margin-right: 10px;
 }
 
+.messageContainer{
+    max-width: 10px;
+    /* overflow: scroll; */
+}
+
+.messageContainer>p{
+    display: inline;
+    max-width: 180px;
+
+}
+
 .messageText{
     padding: 10px;
     border-radius: 20px;
     background-color: #1877f2;
     color: white;
-    max-width: 300px;
+    
+    /* max-height: 500px; */
+    /* flex-wrap: wrap; */
+    /* overflow: scroll; */
 }
 
 .messageBottom{

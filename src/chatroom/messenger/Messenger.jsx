@@ -8,7 +8,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 // import { AuthContext } from "../../context/AuthContext";
 import axios from "../../axios";
 import { io } from "socket.io-client";
-import Navbar from '../../components/NavBar'
+import Navbar from "../../components/NavBar";
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -20,15 +20,15 @@ export default function Messenger() {
   const socket = useRef();
   // const { user } = useContext(AuthContext);
   const scrollRef = useRef();
-  let [user,setUser]=useState({});
+  let [user, setUser] = useState({});
 
   useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Student Data"));
     console.log(data);
     if (data) {
-      setUser(user=data);
+      setUser((user = data));
       console.log("user=======");
-      console.log(user)
+      console.log(user);
     }
 
     socket.current = io("ws://localhost:8900");
@@ -50,9 +50,9 @@ export default function Messenger() {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-    //   setOnlineUsers(
-    //     user.followings.filter((f) => users.some((u) => u.userId === f))
-    //   );
+      //   setOnlineUsers(
+      //     user.followings.filter((f) => users.some((u) => u.userId === f))
+      //   );
     });
   }, [user]);
 
@@ -114,25 +114,19 @@ export default function Messenger() {
   return (
     <>
       {/* <Topbar /> */}
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="messenger">
-        <div className="chatMenu">
+        <div className="chatMenuLeft">
           <div className="chatMenuWrapper">
             {/* <input placeholder="Search for friends" className="chatMenuInput" /> */}
-            <p>Mentors</p>
+
+            <div className="chatMenuHeading">
+              <p>Mentors</p>
+            </div>
+
             {conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} />
-              </div>
-            ))}
-          </div>
-
-          <div className="chatMenuWrapperRight">
-            {/* <input placeholder="Search for friends" className="chatMenuInput" /> */}
-            <p>Mentee</p>
-            {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
-                <ConversationMentee conversation={c} currentUser={user} />
               </div>
             ))}
           </div>
@@ -148,7 +142,14 @@ export default function Messenger() {
                     </div>
                   ))}
                 </div>
-                <div className="chatBoxBottom">
+              </>
+            ) : (
+              <span className="noConversationText">
+                Open a conversation to start a chat.
+              </span>
+            )}
+          </div>
+          <div className="chatBoxBottom">
                   <textarea
                     className="chatMessageInput"
                     placeholder="write something..."
@@ -159,23 +160,29 @@ export default function Messenger() {
                     Send
                   </button>
                 </div>
-              </>
-            ) : (
-              <span className="noConversationText">
-                Open a conversation to start a chat.
-              </span>
-            )}
+        </div>
+        <div className="chatMenuRight">
+          <div className="chatMenuWrapperRight">
+            {/* <input placeholder="Search for friends" className="chatMenuInput" /> */}
+            <div className="chatMenuHeading">
+              <p>Mentees</p>
+            </div>
+            {conversations.map((c) => (
+              <div onClick={() => setCurrentChat(c)}>
+                <ConversationMentee conversation={c} currentUser={user} />
+              </div>
+            ))}
           </div>
         </div>
-        <div className="chatOnline">
+        {/* <div className="chatOnline">
           <div className="chatOnlineWrapper">
-            {/* <ChatOnline
+           <ChatOnline
               onlineUsers={onlineUsers}
               currentId={user._id}
               setCurrentChat={setCurrentChat}
-            /> */}
+            /> 
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

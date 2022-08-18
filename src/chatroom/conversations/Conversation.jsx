@@ -1,6 +1,7 @@
 import axios from "../../axios";
 import { useEffect, useState } from "react";
 import "./conversation.css";
+import avatar from "../../Assets/60111.jpg"
 
 export default function Conversation({ conversation, currentUser }) {
   const [user, setUser] = useState(null);
@@ -34,10 +35,12 @@ export default function Conversation({ conversation, currentUser }) {
   
     {user &&
          <>
-        
       <div className="conversation">
-        <p>{user?.fullname}</p>
-        <span className="conversationName">{user?._id}</span> 
+        <div className="avatar">
+          <img src={avatar} alt="" />
+        </div>
+        {/* <p>{user?.fullname}</p> */}
+        <span className="conversationName">{user?.fullname}</span> 
       </div>
       </>
       }

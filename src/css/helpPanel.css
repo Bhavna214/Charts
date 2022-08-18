@@ -6,6 +6,17 @@
    
 }
 
+.chatContainer{
+    position: absolute;
+    left: 2.5%;
+    z-index: 100;
+    width: 95vw;
+    height: 85vh;
+    top: 5vw;
+    /* margin: 0 auto !important; */
+    background-color: aliceblue;
+}
+
 .subMainContainer{
     display: flex;
     height: 80vh;

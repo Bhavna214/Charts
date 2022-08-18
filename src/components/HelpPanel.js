@@ -7,6 +7,7 @@ import Navbar from "./NavBar";
 import gold from "../Assets/gold medal.png";
 import silver from "../Assets/silver medal.png";
 import bronze from "../Assets/bronze medal.png";
+import Messenger from "../chatroom/messenger/Messenger";
 const HelpPanel = () => {
   let [user, setUser] = useState({});
   let navigate = useNavigate();
@@ -128,6 +129,9 @@ const HelpPanel = () => {
     <div>
       <Navbar />
       <div className="mainContainerHelp">
+        <div className="chatContainer">
+               <Messenger/>
+        </div>
         <div className="topContainer">
           <div className="levelTopContainer">
             <div>
