@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/SignUp";
 import Messenger from "./chatroom/messenger/Messenger";
 import HelpPanel from "./components/HelpPanel";
+import Title from "./components/Title";
 import {
   BrowserRouter,
   Routes, 
@@ -70,7 +71,8 @@ function App() {
               <Route path='/student/home' element={<Studenthome/>}></Route>
               <Route path="/home" element={<NavBar/>}/>
               <Route path="/signup" element={<Signup/>}/>
-              <Route path="/" element={<Login></Login>}/>
+              <Route path="/" element={<Title/>}/>
+              <Route path="/login" element={<Login></Login>}/>
         </Routes>
       </BrowserRouter>
 
