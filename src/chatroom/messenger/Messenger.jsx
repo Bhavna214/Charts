@@ -9,6 +9,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import axios from "../../axios";
 import { io } from "socket.io-client";
 import Navbar from "../../components/NavBar";
+var FA = require('react-fontawesome')
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -115,6 +116,7 @@ export default function Messenger() {
     <>
       {/* <Topbar /> */}
       {/* <Navbar/> */}
+      <FA name="rocket" />
       <div className="messenger">
         <div className="chatMenuLeft">
           <div className="chatMenuWrapper">
@@ -125,7 +127,7 @@ export default function Messenger() {
             </div>
 
             {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
+              <div onClick={() => setCurrentChat(c)} className="activeChat">
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
