@@ -37,14 +37,14 @@ export default function Navbar({user}) {
             <a href="/teacher/analytics">Analysis</a>
           </li>
           <li>
-            <a href="/teacher/teams">My Teams</a>
-          </li>
-          <li>
             <a href="/"  onClick={()=>{sessionStorage.removeItem("Teacher Data")}}>Logout</a>
           </li>
         </ul>):
         (
           <ul>
+            <li>
+            <a href="/student/download">Download</a>
+          </li>
           <li>
             <a href="/student/home">Dashboard</a>
           </li>
