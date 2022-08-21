@@ -127,8 +127,7 @@ export default function Messenger() {
             </div>
 
             {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)
-                } className="activeChat">
+              <div onClick={() => setCurrentChat(c)} className="activeChat">
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
