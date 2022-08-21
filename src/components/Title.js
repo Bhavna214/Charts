@@ -16,11 +16,11 @@ const Title = () => {
           Start
         </button>
       </Link>
-      <Link to="/">
+      {/* <Link to="/">
         <button type="button" style={{fontSize:"1rem", width:"100%", marginTop:"1rem", letterSpacing:"0"}}>
           <a>Download Now</a>
         </button>
-      </Link>
+      </Link> */}
       </div>
     </div>
   )

@@ -337,7 +337,7 @@ const TeacherAnalytics = () => {
                   <p><span className="basicHeading">Username :</span> {username}</p>
                   <p><span className="basicHeading">Email:</span> {email}</p>
                 </div>
-                <p className="attemptList"><span className="attemptSpan">Puzzles Status </span> <p className="puzzleList"> {attempted.map((puzzle,index)=>{return puzzle? <span className="attempt">P{index}<span className="symbol" >✔</span></span>:<span  className="attempt">P{index}<span className="symbol">❌</span></span> })}</p></p>
+                <p className="attemptList"><span className="attemptSpan">Puzzles Status </span> <p className="puzzleList"> {attempted.map((puzzle,index)=>{return puzzle? <span className="attempt">P{index+1}<span className="symbol" >✔</span></span>:<span  className="attempt">P{index+1}<span className="symbol">❌</span></span> })}</p></p>
                 <p className="attemptList"><span className="attemptSpan">Badges</span> <p className="puzzleList"> {badges.map((badge,index)=>{return  <>
                 {badge==='gold' && 
                 <span className="attempt"><img src={gold}/></span>

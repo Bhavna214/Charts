@@ -28,7 +28,7 @@ const Teacherhome = () => {
     }
 
     let reqOptions = {
-      url: "/students",
+      url: "/students/getAllStudents",
       method: "GET",
       headers: headersList,
     }
@@ -58,6 +58,7 @@ const Teacherhome = () => {
 
 
   const calculateLeaderBoardAvg = () => {
+    console.log(students)
 
     let puzzleWiseScoreAvgArray = [];
     // let obj={};
@@ -72,8 +73,8 @@ const Teacherhome = () => {
       let levelWiseAvgArray = [];
       student?.level?.map((level)=>{
         let levelScoreArray=[];
-        if(level.score[0]){
-          levelScoreArray=level.score[0];
+        if(level.score){
+          levelScoreArray=level.score;
         }else{
           levelScoreArray=[0,0,0]
         }

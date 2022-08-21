@@ -111,7 +111,14 @@ const HelpPanel = () => {
   };
 
   function openChat() {
-    navigate("/student/helproom/chat", { replace: true });
+    let chatContainer = document.getElementById("chatContainer");
+    chatContainer.setAttribute('style', 'display:block !important');
+    // navigate("/student/helproom/chat", { replace: true });
+  }
+
+  function closeChat(){
+    let chatContainer = document.getElementById("chatContainer");
+    chatContainer.setAttribute('style', 'display:none !important');
   }
 
   React.useEffect(() => {
@@ -129,9 +136,12 @@ const HelpPanel = () => {
     <div>
       <Navbar />
       <div className="mainContainerHelp">
-        <div className="chatContainer">
+        {/* <div id="chatMainContainer" className="chatMainContainer"> */}
+        <div id="chatContainer" lassName="chatContainer">
+          <span className="crossMark" onClick={closeChat}>	&#10060;</span>
                <Messenger/>
         </div>
+        {/* </div> */}
         <div className="topContainer">
           <div className="levelTopContainer">
             <div>

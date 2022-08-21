@@ -1,11 +1,12 @@
 .messenger {
    height: 100%;
   display: flex;
-  background: white;
+  /* background: white; */
   color: white;
   /* color: #000; */
   background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
   border: 3px solid #BF7B35;
+  border-radius: 10px;
 }
 
 .chatMenuLeft{

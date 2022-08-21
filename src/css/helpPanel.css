@@ -5,16 +5,40 @@
     flex-direction: column;
    
 }
-
-.chatContainer{
+/* 
+.chatMainContainer{
+    display: none;
     position: absolute;
     left: 2.5%;
     z-index: 100;
     width: 95vw;
     height: 85vh;
     top: 5vw;
+} */
+
+.crossMark{
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    font-size: 25px;
+    background: #BF7B35;
+    color: black;
+    font-family: 'Segoe UI Symbol';
+    padding: 2px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#chatContainer{
+    position: absolute !important; 
+     left: 2.5%;
+    z-index: 100;
+    width: 95vw;
+    height: 85vh;
+    top: 5vw;
     /* margin: 0 auto !important; */
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    display:none !important;
 }
 
 .subMainContainer{

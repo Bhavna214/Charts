@@ -41,7 +41,7 @@ const Download = () => {
 
         <Carousel.Caption className='caption'>
           <h3>Download Now</h3>
-          <a href='/'>
+          <a href='/student/download'>
             Download
           </a>
         </Carousel.Caption>
