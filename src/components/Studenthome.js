@@ -93,6 +93,7 @@ const Studenthome = () => {
         timeArray.push(avg);
       });
       if(scoreArray){
+        console.log(scoreArray);
         scoreArray?.map((score,index)=>{
           console.log(scoreObject.datasets[index].data.push(score))
         })
