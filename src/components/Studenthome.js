@@ -108,6 +108,11 @@ const Studenthome = () => {
     console.log(scoreObject)
     setScoreData(scoreObject);
   }
+  
+  function  closeNotes() {
+    let cont = document.getElementById("notesContainer")
+    cont.style.display="none";
+  }
 
   React.useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Student Data"));
@@ -123,6 +128,45 @@ const Studenthome = () => {
   return (
     <div style={{ color: "white" }}>
       <Navbar user="Student"></Navbar>
+ <div onClick={generatePdf} className="downloadPdf">
+        <span>Download</span>
+        <PictureAsPdfIcon></PictureAsPdfIcon>
+      </div>
+      <div id="notesContainer" className="notesContainer">
+      <span className="crossMark" onClick={closeNotes}>	&#10060;</span>
+        <h3>Notes</h3>
+        <ul className="notesContainerUl">
+          <li>
+              <span><img src={diksha}/></span>
+              <div className="linkContainer">
+              <span>Computer Science</span>
+              <p>https://diksha.gov.in/ncert/play/collection/do_313004530830401536139?contentType=TextBook</p>       
+              </div>     
+          </li>
+          <li>
+              <span><img src={ncert}/></span>
+              <div className="linkContainer">
+              <span>Computer Science</span>
+              <p>https://diksha.gov.in/ncert/play/collection/do_313004530830401536139?contentType=TextBook</p>       
+              </div>             
+          </li>
+          <li>
+              <span><img src={diksha}/></span>
+              <div className="linkContainer">
+              <span>Computer Science</span>
+              <p>https://diksha.gov.in/ncert/play/collection/do_313004530830401536139?contentType=TextBook</p>       
+              </div>            
+          </li>
+          <li>
+              <span><img src={ncert}/></span>
+              <div className="linkContainer">
+              <span>Computer Science</span>
+              <p>https://diksha.gov.in/ncert/play/collection/do_313004530830401536139?contentType=TextBook</p>       
+              </div>              
+          </li>
+
+        </ul>
+      </div>
       <div className="mainContainer">
         {/* student profile */}
         <div className="leftContainer">
