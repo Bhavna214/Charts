@@ -42,10 +42,9 @@
     background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
     border: 3px solid #BF7B35;
     color: #BF7B35;
-    height: 30vh;
+    min-height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
     width: 30vw;
     padding: 1.25rem;
@@ -56,6 +55,8 @@
     margin: auto;
     display: none;
     border-radius: 30px;
+    flex-wrap: wrap;
+    padding-right: 20%;
 }
 
 .file-input input{
