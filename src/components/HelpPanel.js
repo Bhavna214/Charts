@@ -14,6 +14,7 @@ const HelpPanel = () => {
   let [levelList, setLevelList] = useState([{}]);
   let [students, setStudents] = useState([]);
   let badgeArray = ["", "bronze", "silver", "gold"];
+  const [neededChat,setNeededChat]=useState(false);
   const displayList = (lvl) => {
     let myBadge = user.level[lvl - 1].badges;
     console.log(myBadge);
@@ -56,6 +57,34 @@ const HelpPanel = () => {
     }
   };
 
+  const getUpdatedUser = async (userId)=>{
+    let headersList = {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+    };
+    let data = {
+      username:`${userId}`
+    };
+    let bodyContent = JSON.stringify(data);
+
+    let reqOptions = {
+      url: `/students/getStudent`,
+      method: "POST",
+      headers: headersList,
+      data: bodyContent,
+    };
+
+    let response = await axios.request(reqOptions);
+    if (response) {
+      console.log(response.data);
+      alert("conversation created");
+      setUser((user = response.data));
+      sessionStorage.setItem("Student Data", JSON.stringify(response.data));
+    } else {
+      alert("error");
+    }
+  }
+
   const createConversation = async (senderId, receiverId) => {
     let headersList = {
       Accept: "*/*",
@@ -78,6 +107,7 @@ const HelpPanel = () => {
     if (response) {
       console.log(response.data);
       alert("conversation created");
+      getUpdatedUser(user._id);
     } else {
       alert("error");
     }
@@ -99,24 +129,31 @@ const HelpPanel = () => {
       headers: headersList,
       data: bodyContent,
     };
-
-    let response = await axios.request(reqOptions);
+    try{
+      let response = await axios.request(reqOptions);
     if (response) {
-      console.log(response.data);
+      console.log(response);
       alert("Followed");
       createConversation(user._id, student._id);
-    } else {
+    } else{
       alert("error");
     }
+    }catch(e){
+      alert("You Already Follow This Mentor");
+    }
+
+    
   };
 
   function openChat() {
+    setNeededChat(true);
     let chatContainer = document.getElementById("chatContainer");
     chatContainer.setAttribute('style', 'display:block !important');
     // navigate("/student/helproom/chat", { replace: true });
   }
 
   function closeChat(){
+    setNeededChat(false);
     let chatContainer = document.getElementById("chatContainer");
     chatContainer.setAttribute('style', 'display:none !important');
   }
@@ -137,10 +174,11 @@ const HelpPanel = () => {
       <Navbar />
       <div className="mainContainerHelp">
         {/* <div id="chatMainContainer" className="chatMainContainer"> */}
+        { neededChat && 
         <div id="chatContainer" lassName="chatContainer">
           <span className="crossMark" onClick={closeChat}>	&#10060;</span>
                <Messenger/>
-        </div>
+        </div>}
         {/* </div> */}
         <div className="topContainer">
           <div className="levelTopContainer">

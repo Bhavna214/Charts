@@ -163,7 +163,7 @@ const TeacherAnalytics = () => {
             attemptArray.push(false);
           }
           let puzzleTimeArray = obj.time;
-          let scoreArray = obj.score[0];
+          let scoreArray = obj.score;
           console.log(scoreArray);
           puzzleTimeArray.map((difficultyTimeArray) => {
             let avg =

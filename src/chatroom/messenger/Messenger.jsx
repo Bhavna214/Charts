@@ -23,16 +23,50 @@ export default function Messenger() {
   const scrollRef = useRef();
   let [user, setUser] = useState({});
 
+
+  const getUpdatedUser = async (userId)=>{
+    let headersList = {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+    };
+    let data = {
+      username:`${userId}`
+    };
+    let bodyContent = JSON.stringify(data);
+
+    let reqOptions = {
+      url: `/students/getStudent`,
+      method: "POST",
+      headers: headersList,
+      data: bodyContent,
+    };
+
+    let response = await axios.request(reqOptions);
+    if (response) {
+      console.log(response.data);
+      // alert("conversation created");
+      setUser((user = response.data));
+      console.log("user=======");
+      console.log(user);
+      // sessionStorage.setItem("Student Data", JSON.stringify(response.data));
+    } else {
+      alert("error");
+    }
+  }
+
   useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Student Data"));
     console.log(data);
     if (data) {
+      // getUpdatedUser(data._id);
       setUser((user = data));
       console.log("user=======");
       console.log(user);
+      
     }
 
     socket.current = io("ws://localhost:8900");
+    // socket.current = io();
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
