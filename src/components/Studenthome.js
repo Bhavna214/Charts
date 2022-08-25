@@ -6,7 +6,10 @@ import "../css/Studenthome.css";
 import gold from '../Assets/gold medal.png'
 import silver from '../Assets/silver medal.png'
 import bronze from '../Assets/bronze medal.png'
-
+import diksha from "../Assets/diksha.png";
+import ncert from "../Assets/ncert.png";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import jsPDF from "jspdf";
 
 const Studenthome = () => {
   const [sData, setSData] = React.useState(null);
@@ -19,7 +22,7 @@ const Studenthome = () => {
     labels: "",
     datasets: [],
   });
-  let [attempted,setAttempted]=useState(["P1❌","P2❌","P3❌","P4❌","P5❌","P6❌","P7❌"]);
+  let [attempted,setAttempted]=useState([]);
   let [badges,setBadges]=useState([]);
 
 
@@ -77,7 +80,8 @@ const Studenthome = () => {
     sData?.level?.map((obj, index) => {
       let timeArray = [];
       // let scoreArray=[];
-      if(obj.badges!=null){
+      console.log(obj)
+      if(obj.badges!==""){
         badgeArray.push(obj.badges);
         attemptArray.push(true);
       }else{
@@ -103,6 +107,7 @@ const Studenthome = () => {
       });
     });
     setAttempted(attemptArray);
+    console.log(attemptArray)
     setBadges(badgeArray)
     setData(dataObject);
     console.log(scoreObject)
@@ -113,6 +118,58 @@ const Studenthome = () => {
     let cont = document.getElementById("notesContainer")
     cont.style.display="none";
   }
+
+  
+
+
+  function generatePdf(event) {
+    let cont = document.getElementById("studentAnalyticsContainer");
+
+    let jspdf = new jsPDF("p","pt","a4");
+    // jspdf.html(cont,(pdf)=>{pdf.save("Analysis.pdf")})
+    jspdf.html(cont,{callback:function(pdf){pdf.save("Analysis.pdf")}})
+
+    // let index = 1;
+    // // create new pdf object
+    // // if don't choose compress as true you will end up with a large pdf file
+    // let pdf = new jsPDF({
+    //   orientation: "landscape",
+    //   unit: "px",
+    //   format: "a4",
+    //   compress: true,
+    // });
+    // // search for the html element(s) you need
+    // const canvas = document.querySelectorAll(".pdfContainer");
+    // console.log(canvas)
+    // // here my size are in pixels since I configured that in the obj instance
+    // let pageWidth = 400;
+    // let pageHeight = 400;
+    // // let index = 1;
+    // // traverse the array of canvas
+    // canvas.forEach((canva: HTMLCanvasElement) => {
+    //   // I added some options among others I added the type of the compression
+    //   // method: FAST
+    //   pdf?.addImage(
+    //     canva,
+    //     "PNG",
+    //     10,
+    //     10,
+    //     pageWidth,
+    //     pageHeight,
+    //     `img${index}`,
+    //     "FAST"
+    //   );
+    //   // so as to not end up with an extra pdf page at the end of the iteration
+    //   if (index < canvas.length) {
+    //     pdf.addPage();
+    //   }
+    //   index++;
+    // });
+
+    // // download the pdf
+    // pdf.save("Reporte.pdf");
+  }
+
 
   React.useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Student Data"));
@@ -204,7 +261,7 @@ const Studenthome = () => {
         </div>
 
         {/* student analytics */}
-        <div className="studentAnalyticsContainer">
+        <div id="studentAnalyticsContainer" className="studentAnalyticsContainer">
           <h1 className="performanceTitle">Your Performance</h1>
           {/* <div className="time-analysis"> */}
           {/* <Chart

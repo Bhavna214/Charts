@@ -12,6 +12,65 @@
     border-radius: 10px;
 }
 
+.notesContainer{
+    position: absolute;
+    background-color: #d3d3d3;
+    padding: 20px;
+    color: #BF7B35;
+    width: fit-content;
+    height: max-content;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-family: "Berkshire swash",cursive;
+    border-radius: 20px;
+    display: none;
+}
+
+.notesContainer>h3{
+   text-align: center;
+}
+
+.notesContainerUl{
+    margin: 10px auto;
+    padding: 0;
+    /* max-width: 500px; */
+}
+
+.notesContainerUl>li{
+    display: flex;
+    color: #1c1814;
+    align-items: center;
+    margin: 10px 0;
+    border-bottom: 3px solid #BF7B35;
+}
+
+.notesContainerUl li>span{
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    align-self: start;
+}
+
+.linkContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.linkContainer>span{
+    color:#69492a;
+}
+
+.notesContainerUl li span>img{
+    width: 100%;
+   border-radius:10px;
+}
+
+
+
 .singlestudentProfileContainer{
    
     /* border-right: 1px solid whitesmoke; */
@@ -28,6 +87,24 @@
     display: none;
 }
 
+.downloadPdf{
+    position: absolute;
+    right: 5px;
+    top: 65px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid #BF7B35;
+}
+
+.downloadPdf .MuiSvgIcon-root{
+    width: 50px;
+    font-size: 35px;
+}
 
 .studentAnalyticsContainer{
     flex: 0.65;

@@ -8,6 +8,11 @@ export default function Navbar({user}) {
     document.getElementById("notes").style.display="block";
   }
 
+  function showNotesStudentNotes(){
+    document.getElementById("notesContainer").style.display="block";
+  }
+
+
   return (
     <nav className="navigation">
       <a href="/" className="brand-name">
@@ -51,6 +56,9 @@ export default function Navbar({user}) {
           <ul>
             <li>
             <a href="/student/download">Download</a>
+          </li>
+          <li onClick={showNotesStudentNotes}>
+          <a href="#">Notes</a>
           </li>
           <li>
             <a href="/student/home">Dashboard</a>

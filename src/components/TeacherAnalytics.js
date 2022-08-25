@@ -156,7 +156,7 @@ const TeacherAnalytics = () => {
           
           // let scoreArray=[];
           
-          if(obj.badges!=null){
+          if(obj.badges!=""){
             badgearray.push(obj.badges);
             attemptArray.push(true);
           }else{
