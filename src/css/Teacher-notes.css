@@ -1,0 +1,38 @@
+.teacher-notes{
+    position: absolute;
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+  /* background: white; */
+  background-color: #d3d3d3;
+  /* color: #000; */
+  color: black;
+  border: 3px solid #BF7B35;
+  border-radius: 10px;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50vw;
+  display: none;
+}
+
+.heading{
+    display: flex;
+}
+
+.note-item{
+    border-bottom: 2px solid #BF7B35;
+    display: flex;
+}
+
+.note-item img{
+    width: 5rem;
+    height: 5rem;
+}
+
+.note-content{
+    padding: 1rem;
+}

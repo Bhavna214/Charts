@@ -4,6 +4,10 @@ import '../css/navbar.css'
 export default function Navbar({user}) {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
 
+  function showNotes(){
+    document.getElementById("notes").style.display="block";
+  }
+
   return (
     <nav className="navigation">
       <a href="/" className="brand-name">
@@ -35,6 +39,9 @@ export default function Navbar({user}) {
           </li>
           <li>
             <a href="/teacher/analytics">Analysis</a>
+          </li>
+          <li>
+            <a onClick={showNotes}>Notes</a>
           </li>
           <li>
             <a href="/"  onClick={()=>{sessionStorage.removeItem("Teacher Data")}}>Logout</a>

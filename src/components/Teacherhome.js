@@ -7,6 +7,7 @@ import avatar from "../Assets/60111.jpg";
 import gold from '../Assets/gold medal.png'
 import silver from '../Assets/silver medal.png'
 import bronze from '../Assets/bronze medal.png'
+import Teacher_Notes from './Teacher_Notes';
 
 const Teacherhome = () => {
 
@@ -111,7 +112,8 @@ const Teacherhome = () => {
 
       <Navbar user="Teacher"></Navbar>
 
-      <div className="teacher-main">
+      <div className="teacher-main" style={{position: "relative"}}>
+        <Teacher_Notes/>
         <div className="leftSideBar" style={{ color: "Black" }}>
           <div className="leaderBoardHeading">
               <h2>LEADERBOARD</h2>
