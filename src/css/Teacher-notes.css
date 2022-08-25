@@ -36,3 +36,29 @@
 .note-content{
     padding: 1rem;
 }
+
+.file-input{
+    position: absolute;
+    background: linear-gradient(179.43deg, #1c1814 11.93%, #401e07 80.94%);
+    border: 3px solid #BF7B35;
+    color: #BF7B35;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 30vw;
+    padding: 1.25rem;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: none;
+    border-radius: 30px;
+}
+
+.file-input input{
+    width: 100%;
+    margin: 1.5rem;
+}
