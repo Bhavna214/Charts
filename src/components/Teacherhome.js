@@ -8,6 +8,7 @@ import gold from '../Assets/gold medal.png'
 import silver from '../Assets/silver medal.png'
 import bronze from '../Assets/bronze medal.png'
 import Teacher_Notes from './Teacher_Notes';
+import Footer from './Footer'
 
 const Teacherhome = () => {
 
@@ -209,6 +210,7 @@ const Teacherhome = () => {
           </table>
         </div>
       </div>
+      <Footer/>
       </div>
   )
 }

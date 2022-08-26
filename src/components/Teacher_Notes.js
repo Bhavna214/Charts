@@ -82,6 +82,7 @@ const Teacher_Notes = () => {
                             setLink(event.target.value);
                         }}
                     />
+                    <button>Upload</button>
                     <CancelIcon onClick={closeInput} style={{ position: "absolute", right: "-10px", fontSize: "2rem", top: "-10px", color: "#BF7B35" }} />
                 </div>
             </div>

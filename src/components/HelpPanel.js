@@ -13,30 +13,59 @@ const HelpPanel = () => {
   let navigate = useNavigate();
   let [levelList, setLevelList] = useState([{}]);
   let [students, setStudents] = useState([]);
+  let [Teachers, setTeachers] = useState([]);
   let badgeArray = ["", "bronze", "silver", "gold"];
   const [neededChat,setNeededChat]=useState(false);
-  const displayList = (lvl) => {
-    let myBadge = user.level[lvl - 1].badges;
-    console.log(myBadge);
-    //    console.log(students)
-    let levelWiseList = [];
-    students?.map((student) => {
-      let puzzleBadge = student.level[lvl - 1].badges;
-      if (puzzleBadge === "gold") {
-        if (badgeArray.indexOf(puzzleBadge) >= badgeArray.indexOf(myBadge)) {
-          console.log("entered");
-          levelWiseList.push(student);
-        }
-      } else {
-        if (badgeArray.indexOf(puzzleBadge) > badgeArray.indexOf(myBadge)) {
-          console.log("entered");
-          levelWiseList.push(student);
-        }
-      }
-    });
 
-    console.log(levelWiseList);
-    setLevelList((levelList = levelWiseList));
+
+  const displayTeachers = async  ()=>{
+    let headersList = {
+      Accept: "*/*",
+    };
+
+    let reqOptions = {
+      url: "/teachers/getAllTeachers",
+      method: "GET",
+      headers: headersList,
+    };
+
+    let response = await axios.request(reqOptions);
+    if (response) {
+      console.log(response.data);
+      setTeachers((Teachers = response.data));
+    }
+  }
+
+
+
+
+  const displayList = (lvl) => {
+    if(lvl!==8){
+      let myBadge = user.level[lvl - 1].badges;
+      console.log(myBadge);
+      //    console.log(students)
+      let levelWiseList = [];
+      students?.map((student) => {
+        let puzzleBadge = student.level[lvl - 1].badges;
+        if (puzzleBadge === "gold") {
+          if (badgeArray.indexOf(puzzleBadge) >= badgeArray.indexOf(myBadge)) {
+            console.log("entered");
+            levelWiseList.push(student);
+          }
+        } else {
+          if (badgeArray.indexOf(puzzleBadge) > badgeArray.indexOf(myBadge)) {
+            console.log("entered");
+            levelWiseList.push(student);
+          }
+        }
+      });
+  
+      console.log(levelWiseList);
+      setLevelList((levelList = levelWiseList));
+    }else{
+      displayTeachers()
+    }
+
   };
 
   const getStudents = async () => {
@@ -251,13 +280,20 @@ const HelpPanel = () => {
             >
               level 7
             </p>
+            <p
+              onClick={() => {
+                displayList(8);
+              }}
+            >
+              Teachers
+            </p>
             </div>
           </div>
         </div>
         <div className="rightContainer">
           <div className="listContainer">
             <div className="tempContainer">
-              {levelList.map((student) => {
+              {levelList[0] && levelList.map((student) => {
                 return (
                   <>
                     {student.fullname ? (
@@ -298,6 +334,47 @@ const HelpPanel = () => {
                   </>
                 );
               })}
+
+              {Teachers[0] &&  Teachers.map((teacher)=>{
+                return <>
+                {teacher.fullname && 
+                <div key={teacher._id} className="studentList">
+                        <p>{teacher.fullname}</p>
+                        {/* <div className="imageContainer">
+                          {student?.level?.map((lvl, index) => {
+                            return (
+                              <div key={index}>
+                                {lvl.badges === "gold" && (
+                                  <img src={gold} alt="" />
+                                )}
+                                {lvl.badges === "silver" && (
+                                  <img src={silver} alt="" />
+                                )}
+
+                                {lvl.badges === "bronze" && (
+                                  <img src={bronze} alt="" />
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div> */}
+                        {teacher.fullname && (
+                          <button
+                            className="followBtn"
+                            onClick={() => {
+                              makeFollowRequest(teacher);
+                            }}
+                          >
+                            Follow
+                          </button>
+                        )}
+                      </div>
+                
+                          }
+                
+                </>
+              })}
+
             </div>
           </div>
         </div>

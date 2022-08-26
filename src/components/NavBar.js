@@ -1,5 +1,6 @@
 import { useState } from "react"
 import '../css/navbar.css'
+import logo from '../Assets/logo.png'
 
 export default function Navbar({user}) {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
@@ -16,6 +17,7 @@ export default function Navbar({user}) {
   return (
     <nav className="navigation">
       <a href="/" className="brand-name">
+        <img src={logo} style={{width:"2.5rem", height:"2.5rem", marginRight: "10px"}}></img>
         BUG SQUASHERS
       </a>
       <button
