@@ -174,6 +174,36 @@ const HelpPanel = () => {
     
   };
 
+  const makeFollowRequestTeacher = async (teacher)=>{
+    let headersList = {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+    };
+    let data = {
+      userId: `${user._id}`,
+    };
+    let bodyContent = JSON.stringify(data);
+
+    let reqOptions = {
+      url: `/teachers/follow/${teacher._id}`,
+      method: "PUT",
+      headers: headersList,
+      data: bodyContent,
+    };
+    try{
+      let response = await axios.request(reqOptions);
+    if (response) {
+      console.log(response);
+      alert("Followed");
+      createConversation(user._id, teacher._id);
+    } else{
+      alert("error");
+    }
+    }catch(e){
+      alert("You Already Follow This Mentor");
+    }
+  }
+
   function openChat() {
     setNeededChat(true);
     let chatContainer = document.getElementById("chatContainer");
@@ -362,7 +392,7 @@ const HelpPanel = () => {
                           <button
                             className="followBtn"
                             onClick={() => {
-                              makeFollowRequest(teacher);
+                              makeFollowRequestTeacher(teacher);
                             }}
                           >
                             Follow

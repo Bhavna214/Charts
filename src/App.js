@@ -20,6 +20,7 @@ import Studenthome from "./components/Studenthome";
 import Teacherhome from "./components/Teacherhome"
 import TeacherAnalytics from "./components/TeacherAnalytics";
 import Download from "./components/Download";
+import TeacherChat from "./components/TeacherChat";
 function App() {
   // const [userData, setUserData] = useState({
   //   labels: UserData.map((data) => data.level),
@@ -67,6 +68,7 @@ function App() {
         <Routes>
               <Route path="/teacher/analytics" element={<TeacherAnalytics/>}></Route>
               <Route path='/teacher/home' element={<Teacherhome/>}></Route>
+              <Route path='/teacher/chat' element={<TeacherChat/>}></Route>
               <Route path='/student/helproom/chat' element={<Messenger/>}></Route>
               <Route path='/student/helproom' element={<HelpPanel/>}></Route>
               <Route path='/student/home' element={<Studenthome/>}></Route>

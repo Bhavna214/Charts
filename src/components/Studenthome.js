@@ -10,6 +10,7 @@ import diksha from "../Assets/diksha.png";
 import ncert from "../Assets/ncert.png";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import jsPDF from "jspdf";
+import Footer from './Footer'
 
 const Studenthome = () => {
   const [sData, setSData] = React.useState(null);
@@ -349,6 +350,7 @@ const Studenthome = () => {
             </div>
           </div>
         </div>
+        <Footer/>
     </div>
   );
 };

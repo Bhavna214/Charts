@@ -9,6 +9,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import axios from "../../axios";
 import { io } from "socket.io-client";
 import Navbar from "../../components/NavBar";
+import ConversationTeacher from '../conversations/ConversationTeacher'
 var FA = require('react-fontawesome')
 
 export default function Messenger() {
@@ -22,6 +23,7 @@ export default function Messenger() {
   // const { user } = useContext(AuthContext);
   const scrollRef = useRef();
   let [user, setUser] = useState({});
+  const [userRole,setUserRole]=useState("");
 
 
   const getUpdatedUser = async (userId)=>{
@@ -56,13 +58,16 @@ export default function Messenger() {
 
   useEffect(() => {
     let data = JSON.parse(sessionStorage.getItem("Student Data"));
-    console.log(data);
+    let role = localStorage.getItem("userRole");
+
     if (data) {
+      console.log(data);
+      console.log(role)
       // getUpdatedUser(data._id);
       setUser((user = data));
       console.log("user=======");
       console.log(user);
-      
+      setUserRole(role);
     }
 
     socket.current = io("ws://localhost:8900");
@@ -152,21 +157,24 @@ export default function Messenger() {
       {/* <Navbar/> */}
       <FA name="rocket" />
       <div className="messenger">
-        <div className="chatMenuLeft">
-          <div className="chatMenuWrapper">
+       
+         
             {/* <input placeholder="Search for friends" className="chatMenuInput" /> */}
+            {userRole==='Student'? (
+            <>
+             <div className="chatMenuLeft">
+               <div className="chatMenuWrapper">
+                  <div className="chatMenuHeading">
+                     <p>Mentors</p>
+                   </div>
 
-            <div className="chatMenuHeading">
-              <p>Mentors</p>
-            </div>
-
-            {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)} className="activeChat">
-                <Conversation conversation={c} currentUser={user} />
-              </div>
-            ))}
-          </div>
-        </div>
+                {conversations.map((c) => (
+                   <div onClick={() => setCurrentChat(c)} className="activeChat">
+                       <Conversation conversation={c} currentUser={user} />
+                   </div>
+                 ))}
+             </div>
+           </div>
         <div className="chatBox">
           <div className="chatBoxWrapper">
             {currentChat ? (
@@ -210,6 +218,54 @@ export default function Messenger() {
             ))}
           </div>
         </div>
+          </>
+        ):(<>
+        <div className="chatMenuLeft">
+               <div className="chatMenuWrapper">
+                  <div className="chatMenuHeading">
+                     <p>Mentors</p>
+                   </div>
+                {console.log(conversations)}
+                {conversations.map((c) => (
+                   <div onClick={() => setCurrentChat(c)} className="activeChat">
+                       <ConversationTeacher conversation={c} currentUser={user} />
+                   </div>
+                 ))}
+             </div>
+           </div>
+        <div className="chatBox">
+          <div className="chatBoxWrapper">
+            {currentChat ? (
+              <>
+                <div className="chatBoxTop">
+                  {messages.map((m) => (
+                    <div ref={scrollRef}>
+                      <Message message={m} own={m.sender === user._id} />
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <span className="noConversationText">
+                Open a conversation to start a chat.
+              </span>
+            )}
+          </div>
+          <div className="chatBoxBottom">
+                  <textarea
+                    className="chatMessageInput"
+                    placeholder="write something..."
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    value={newMessage}
+                  ></textarea>
+                  <button className="chatSubmitButton" onClick={handleSubmit}>
+                    Send
+                  </button>
+                </div>
+        </div>
+        
+        </>)}
+            
         {/* <div className="chatOnline">
           <div className="chatOnlineWrapper">
            <ChatOnline

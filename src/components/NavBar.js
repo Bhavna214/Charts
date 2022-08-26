@@ -51,6 +51,9 @@ export default function Navbar({user}) {
             <a onClick={showNotes}>Notes</a>
           </li>
           <li>
+            <a href="/teacher/chat">Chat-Room</a>
+          </li>
+          <li>
             <a href="/"  onClick={()=>{sessionStorage.removeItem("Teacher Data")}}>Logout</a>
           </li>
         </ul>):
